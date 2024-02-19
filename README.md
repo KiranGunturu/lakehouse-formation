@@ -77,16 +77,30 @@ cd de-s3-glue-athena-orders-analysis/
 ```sh
 terraform init
 ```
+![image](https://github.com/KiranGunturu/terraform/assets/91672788/5aa6e9ca-d581-4353-949a-03fff04a1f20)
+
 #### Plan your actions
 ```sh
 terraform plan
 ```
+![image](https://github.com/KiranGunturu/terraform/assets/91672788/ddbd053d-7bc8-432b-85f1-7aeb2888fd35)
+
+![image](https://github.com/KiranGunturu/terraform/assets/91672788/67d731e6-adb3-4068-a36d-3a80dcf5ada4)
+
+
 #### Create your aws resources
 ```sh
 terraform apply
 ```
+![image](https://github.com/KiranGunturu/terraform/assets/91672788/49bc8190-2c9a-4250-9d92-2270bbe88948)
+
+![image](https://github.com/KiranGunturu/terraform/assets/91672788/ccb0a9db-0342-48ba-a922-6bb46f58eb48)
+
+![image](https://github.com/KiranGunturu/terraform/assets/91672788/e5ce6c7d-eebd-4cd5-93dc-8ab269c5b4bb)
+
 #### Delete your aws resources
 ```sh
 terraform destroy
 ```
+![image](https://github.com/KiranGunturu/terraform/assets/91672788/9f4dd635-57b5-4b2e-b0fd-a6eb32935798)
 
