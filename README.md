@@ -1,3 +1,6 @@
+![image](https://github.com/KiranGunturu/terraform/assets/91672788/12dfb6ba-f60a-4c40-a7ce-5613f3cf4863)
+
+
 ### Title: "AWS Data Pipeline: S3 Data Ingestion, Glue Cataloging, Athena Querying, QuickSight Visualization, and Terraform Provisioning"
 
 This project involves the efficient management and utilization of data stored in Amazon S3 (Simple Storage Service) within an AWS (Amazon Web Services) environment. The primary objective is to create a streamlined data pipeline that includes data ingestion, cataloging, querying, and visualization capabilities.
