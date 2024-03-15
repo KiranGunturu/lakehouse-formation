@@ -4,15 +4,8 @@ provider "aws" {
   
 }
 
-# declare variable for s3 fodler
-variable "s3_folder_path" {
-    description = "path to the s3 fodler"
-    type = string
-  
-}
-
 variable "bucket" {
-    description = "name of the s3 folder"
+    description = "name of the s3 bucket"
     type = string
     default = null
   
@@ -23,6 +16,11 @@ variable "Environment" {
     type = string
     default = null
   
+}
+
+variable "objects" {
+  type = list(string)
+  default = []
 }
 
 # create s3 bucket, folder, block public access and disable the versioning
@@ -50,9 +48,13 @@ resource "aws_s3_bucket_versioning" "versioning_example" {
   }
 }
 
-resource "aws_s3_object" "s3_folder" {
-    key    = var.s3_folder_path
-    bucket = aws_s3_bucket.s3_bucket.id
 
+resource "aws_s3_object" "s3_bucket_objects" {
+  for_each = { for obj in var.objects : obj => null } #convert the list into a dict where each key is an object key (folder path) and the value is null
+
+  bucket = aws_s3_bucket.s3_bucket.id
+  key    = each.key
 }
+
+
 

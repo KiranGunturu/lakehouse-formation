@@ -21,6 +21,12 @@ resource "aws_iam_role" "iam_for_lambda" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
+resource "aws_iam_policy_attachment" "s3_full_access" {
+  name       = "s3_full_access"
+  roles      = [aws_iam_role.iam_for_lambda.name]
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+}
+
 variable "lambda_function_name" {
     description = "name of the lambda funciton"
     default = null
