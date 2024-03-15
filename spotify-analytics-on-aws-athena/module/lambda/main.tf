@@ -56,6 +56,48 @@ variable "lambda_memory_size" {
     default = 128
   
 }
+
+variable "client_id_env_var" {
+    description = "value of the spotify client id"
+    default = null
+
+  
+}
+
+variable "client_secret_env_var" {
+    description = "value of the spotify client id"
+    default = null
+
+  
+}
+
+variable "source_code_hash" {
+    description = "value of the source_code_hash to address code change and deployment"
+  
+}
+
+variable "lambda_layer_zip_file" {
+    description = "file name of the lambda layer that we want to create the layer as"
+  
+}
+
+variable "lambda_layer_name" {
+    description = "name of the lambda layer name"
+  
+}
+
+variable "lambda_layer_runtime" {
+    description = "value of the lambda layer runtime"
+  
+}
+
+resource "aws_lambda_layer_version" "lambda_layer" {
+  filename   = var.lambda_layer_zip_file
+  layer_name = var.lambda_layer_name
+  compatible_runtimes = [var.lambda_layer_runtime]
+}
+
+
 resource "aws_lambda_function" "test_lambda" {
   # If the file is not in the current working directory you will need to include a
   # path.module in the filename.
@@ -66,5 +108,16 @@ resource "aws_lambda_function" "test_lambda" {
   timeout = var.lambda_timeout
   runtime = var.lambda_runtime
   memory_size = var.lambda_memory_size
+  source_code_hash = var.source_code_hash
+
+  environment {
+    variables = {
+      client_id = var.client_id_env_var
+      client_secret = var.client_secret_env_var
+    }
+  }
+
+  layers = [aws_lambda_layer_version.lambda_layer.arn]
 
 }
+
