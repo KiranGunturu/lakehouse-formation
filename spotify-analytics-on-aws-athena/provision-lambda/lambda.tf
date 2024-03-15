@@ -16,7 +16,7 @@ module "lambda-raw" {
     source_code_hash = filebase64sha256("/workspaces/terraform/spotify-analytics-on-aws-athena/spotify_extraxt_raw_data.zip")
     client_id_env_var = "ab127ec3521b4297a152d463e88471a7"
     client_secret_env_var = "cd93f807fa85493d908b570eb5841eea"
-    lambda_layer_zip_file = "/workspaces/terraform/spotify-analytics-on-aws-athena/spotify_layer.zip"
+    lambda_layer_zip_file = "/workspaces/terraform/spotify-analytics-on-aws-athena/spotipy_layer.zip"
     lambda_layer_name = "spotify_layer"
     lambda_layer_runtime = "python3.8"
 
