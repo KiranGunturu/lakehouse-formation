@@ -15,13 +15,14 @@ module "s3_raw" {
         ]
     bucket = "spotify-analytics-raw-data"
     Environment =  "Dev"
-  
+
+    
 }
 
 # provision S3 bucket to store transformed data
-module "s3_cleansed" {
+/*module "s3_cleansed" {
     source = "/workspaces/terraform/spotify-analytics-on-aws-athena/module/s3"
     bucket = "spotify-analytics-cleansed-data"
     Environment =  "Dev"
   
-}
+}*/

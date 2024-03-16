@@ -74,7 +74,6 @@ variable "client_secret_env_var" {
     description = "value of the spotify client id"
     default = null
 
-  
 }
 
 variable "source_code_hash" {
@@ -82,12 +81,12 @@ variable "source_code_hash" {
   
 }
 
-variable "lambda_layer_zip_file" {
+variable "lambda_spotipy_layer_zip_file" {
     description = "file name of the lambda layer that we want to create the layer as"
   
 }
 
-variable "lambda_layer_name" {
+variable "lambda_spotipy_layer_name" {
     description = "name of the lambda layer name"
   
 }
@@ -97,12 +96,28 @@ variable "lambda_layer_runtime" {
   
 }
 
-resource "aws_lambda_layer_version" "lambda_layer" {
-  filename   = var.lambda_layer_zip_file
-  layer_name = var.lambda_layer_name
+variable "s3_bucket" {
+  description = "name of the s3 bucket where we want lambda to store the data"
+  
+}
+
+variable "s3_key" {
+  description = "name of the s3 folder where we want to lambda to store to the files"
+  
+}
+
+variable "pandas_layer" {
+  description = "name of the aws provided pandas layer"
+  
+}
+resource "aws_lambda_layer_version" "spotipy_layer" {
+  filename   = var.lambda_spotipy_layer_zip_file
+  layer_name = var.lambda_spotipy_layer_name
   compatible_runtimes = [var.lambda_layer_runtime]
 }
 
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
 
 resource "aws_lambda_function" "test_lambda" {
   # If the file is not in the current working directory you will need to include a
@@ -116,14 +131,19 @@ resource "aws_lambda_function" "test_lambda" {
   memory_size = var.lambda_memory_size
   source_code_hash = var.source_code_hash
 
+
   environment {
     variables = {
       client_id = var.client_id_env_var
       client_secret = var.client_secret_env_var
+      s3_bucket = var.s3_bucket
+      s3_key = var.s3_key
     }
   }
 
-  layers = [aws_lambda_layer_version.lambda_layer.arn]
+  layers = [aws_lambda_layer_version.spotipy_layer.arn,
+            "arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:layer:${var.pandas_layer}:17"
+            ]
 
 }
 

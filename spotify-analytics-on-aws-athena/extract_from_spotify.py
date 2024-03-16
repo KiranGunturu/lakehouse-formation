@@ -3,6 +3,9 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import json
 import os
+import boto3
+from botocore.config import Config
+import datetime
 
 # constants
 playlist_link="https://open.spotify.com/playlist/37i9dQZF1DX18jTM2l2fJY"
@@ -13,34 +16,49 @@ def connect_to_spotify(client_id, client_secret):
     return sp
 
 # parse the playlist URI
-def get_playlist_uri(playlist_link):
+def get_spotify_data(sp, playlist_link):
     playlist_uri=playlist_link.split("/")[-1]
-    return playlist_uri
+    spotify_data =  sp.playlist_tracks(playlist_uri)
+    return spotify_data
 
-# extract albums data from API
-def get_album_data(sp, playlist_uri):
-    data=sp.playlist_tracks(playlist_uri)
-    album_data = []
-    for row in data['items']:
-        album_id=row['track']['album']['id']
-        album_name=row['track']['album']['name']
-        album_release_date=row['track']['album']['release_date']
-        album_total_tracks=row['track']['album']['total_tracks']
-        #album=row['track']['album']['artists'][0]['external_urls']['spotify']
-        album_url=row['track']['album']['external_urls']['spotify']   
-        #items=json.dumps(items, indent=3)
-        album = {"album_id": album_id, "album_name": album_name, "release_date": album_release_date, "album_total_tracks": album_total_tracks, "album_url": album_url}
-        album_data.append(album)
-    return album_data
+# s3 client
+def s3_client(region_name=None):
+    my_region = os.environ['AWS_REGION']
+    print(my_region)
+    region_name = region_name or my_region
+    client = boto3.client("s3")
+    return client
+
+# push to s3
+def put_object(client, bucket, key, data):
+    client.put_object(
+        Bucket = bucket,
+        Key = key,
+        Body = data
+        )
+
+def get_current_datetime():
+    current_datetime = datetime.datetime.now()
+    current_datetime_str = current_datetime.strftime("%Y-%m-%d-%H-%M-%S")
+    return current_datetime_str
+    
+
 
 # lambda handler
 def extract_and_ingest_to_s3(event, context):
     try:
         client_id = os.environ.get("client_id")
         client_secret = os.environ.get("client_secret")
+        s3_bucket = os.environ.get("s3_bucket")
+        dateAndTime = get_current_datetime()
+        filename = "spotify_raw_" + dateAndTime + ".json"
+        s3_key = os.environ.get("s3_key")
+        s3_key = s3_key+filename
+        print(s3_key)
         sp = connect_to_spotify(client_id,client_secret)
-        playlist_uri = get_playlist_uri(playlist_link)
-        albums = get_album_data(sp, playlist_uri)
-        print(type(albums))
+        spotify_data = get_spotify_data(sp, playlist_link)
+        spotify_data = json.dumps(spotify_data)
+        s3 = s3_client()
+        put_object(s3, s3_bucket, s3_key, spotify_data)
     except Exception as e:
         print(e)
