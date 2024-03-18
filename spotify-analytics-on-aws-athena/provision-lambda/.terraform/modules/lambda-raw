@@ -1,1 +1,1 @@
-/workspaces/terraform/spotify-analytics-on-aws-athena/module/lambda
+/workspaces/terraform/spotify-analytics-on-aws-athena/module/lambda_with_cloudwatch_evnt

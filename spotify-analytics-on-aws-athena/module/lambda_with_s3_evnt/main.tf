@@ -16,14 +16,14 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
-resource "aws_iam_role" "iam_for_lambda" {
-  name               = "iam_for_lambda"
+resource "aws_iam_role" "iam_for_lambda_transform" {
+  name               = "iam_for_lambda_transform"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
 resource "aws_iam_policy_attachment" "s3_full_access" {
   name       = "s3_full_access"
-  roles      = [aws_iam_role.iam_for_lambda.name]
+  roles      = [aws_iam_role.iam_for_lambda_transform.name]
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
 }
 
@@ -114,26 +114,34 @@ variable "s3_archive" {
   
 }
 
-variable "pandas_layer" {
+variable "layer" {
   description = "name of the aws provided pandas layer"
   default = null
   
 }
-resource "aws_lambda_layer_version" "spotipy_layer" {
-  filename   = var.lambda_spotipy_layer_zip_file
-  layer_name = var.lambda_spotipy_layer_name
-  compatible_runtimes = [var.lambda_layer_runtime]
+
+variable "layer_version" {
+  description = "name of the aws provided pandas layer"
+  default = null
+  
 }
 
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
+
+/*resource "aws_lambda_layer_version" "layer" {
+  layer_name = "arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:layer:${var.layer}:${var.layer_version}"
+  #compatible_runtimes = [var.lambda_layer_runtime]
+}*/
+
+
 
 resource "aws_lambda_function" "test_lambda" {
   # If the file is not in the current working directory you will need to include a
   # path.module in the filename.
   filename      = var.lambda_file_to_be_uploaded
   function_name = var.lambda_function_name
-  role          = aws_iam_role.iam_for_lambda.arn
+  role          = aws_iam_role.iam_for_lambda_transform.arn
   handler       = var.lambda_handler_name
   timeout = var.lambda_timeout
   runtime = var.lambda_runtime
@@ -149,8 +157,8 @@ resource "aws_lambda_function" "test_lambda" {
     }
   }
 
-  #layers = [aws_lambda_layer_version.spotipy_layer.arn,"arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:layer:${var.pandas_layer}:17"]
-  layers = [aws_lambda_layer_version.spotipy_layer.arn]
-
+  
+  layers = ["arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:layer:${var.layer}:${var.layer_version}"]
+  #layers = [aws_lambda_layer_version.layer.arn]
 }
 
