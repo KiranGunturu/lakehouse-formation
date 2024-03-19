@@ -111,6 +111,12 @@ variable "pandas_layer" {
   default = null
   
 }
+variable "evnt_schedule" {
+  description = "schedule at which we want this lambda to be triggered"
+  default = "cron(0 9 * * ? *)" #9am utc everyday
+  
+}
+
 resource "aws_lambda_layer_version" "spotipy_layer" {
   filename   = var.lambda_spotipy_layer_zip_file
   layer_name = var.lambda_spotipy_layer_name
@@ -154,7 +160,7 @@ resource "aws_cloudwatch_event_rule" "lambda_schedule" {
   depends_on = [
     aws_lambda_function.test_lambda
   ]
-  schedule_expression = "rate(1 minute)"
+  schedule_expression = var.evnt_schedule
 }
 
 resource "aws_cloudwatch_event_target" "onemin_lambda" {

@@ -27,6 +27,12 @@ resource "aws_iam_policy_attachment" "s3_full_access" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
 }
 
+resource "aws_iam_policy_attachment" "addLambdarole" {
+  name       = "addLambdarole"
+  roles      = [aws_iam_role.iam_for_lambda_transform.name]
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaRole"
+}
+
 variable "lambda_function_name" {
     description = "name of the lambda funciton"
     default = null
@@ -126,6 +132,18 @@ variable "layer_version" {
   
 }
 
+variable "s3_evnt_bucket_arn" {
+  description = "name of the bucket on which lambda to be triggred based on the event in s3"
+  default = null
+  
+}
+
+variable "s3_evnt_bucket_prefix" {
+  description = "name of the s3 folder on which lambda to be triggred based on the event in s3"
+  default = null
+  
+}
+
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
@@ -158,7 +176,32 @@ resource "aws_lambda_function" "test_lambda" {
   }
 
   
-  layers = ["arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:layer:${var.layer}:${var.layer_version}"]
+  #layers = ["arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:layer:${var.layer}:${var.layer_version}"]
   #layers = [aws_lambda_layer_version.layer.arn]
 }
 
+
+data "aws_s3_bucket" "example_bucket" {
+  bucket = var.s3_evnt_bucket_arn
+}
+
+resource "aws_lambda_permission" "example_lambda_permission" {
+  statement_id  = "AllowExecutionFromS3"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.test_lambda.function_name
+  principal     = "s3.amazonaws.com"
+
+  source_arn = data.aws_s3_bucket.example_bucket.arn
+}
+
+
+
+resource "aws_s3_bucket_notification" "example_bucket_notification" {
+  bucket = var.s3_evnt_bucket_arn
+
+  lambda_function {
+    lambda_function_arn = aws_lambda_function.test_lambda.arn
+    events              = ["s3:ObjectCreated:*"]
+    filter_prefix       = var.s3_evnt_bucket_prefix  # Specify the folder path to watch for object creation
+  }
+}

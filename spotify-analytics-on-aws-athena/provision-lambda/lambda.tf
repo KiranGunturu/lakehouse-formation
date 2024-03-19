@@ -7,7 +7,7 @@ provider "aws" {
 
 
 # provision lambda function to extract data from spotify Api
-/*module "lambda-raw" {
+module "lambda-raw" {
     source = "/workspaces/terraform/spotify-analytics-on-aws-athena/module/lambda_with_cloudwatch_evnt"
     lambda_file_to_be_uploaded = "/workspaces/terraform/spotify-analytics-on-aws-athena/spotify_extraxt_raw_data.zip"
     lambda_function_name = "spotify_extract_raw_data"
@@ -24,6 +24,7 @@ provider "aws" {
     #pandas_layer = "AWSSDKPandas-Python38"
     s3_bucket = "spotify-analytics-raw-data"
     s3_key = "raw_data/landing/"
+    evnt_schedule = "rate(120 minutes)"
     
 }
 
@@ -41,13 +42,16 @@ module "lambda-transform" {
     s3_bucket = "spotify-analytics-raw-data"
     s3_landing = "raw_data/landing/"
     s3_archive = "raw_data/archive/"
-    layer = "AWSLambda-Python27-SciPy1x"
-    layer_version = "107"
+    #layer = "AWSLambda-Python27-SciPy1x"
+    #layer_version = "107"
+    s3_evnt_bucket_arn = "spotify-analytics-raw-data"
+    s3_evnt_bucket_prefix = "raw_data/landing/"
+
     
-}*/
+}
 
 # provision lambda function to extract data from spotify Api
-module "lambda-custom" {
+/*module "lambda-custom" {
     source = "/workspaces/terraform/spotify-analytics-on-aws-athena/module/lambda_with_custom_libraries"
     lambda_file_to_be_uploaded = "/workspaces/terraform/spotify-analytics-on-aws-athena/spotify_extraxt_raw_data.zip"
     lambda_function_name = "spotify_extract_raw_data"
@@ -66,4 +70,4 @@ module "lambda-custom" {
     
 
 
-}
+}*/

@@ -3,6 +3,7 @@ import boto3
 import pandas as pd
 import datetime
 from io import StringIO
+import os
 
 
 # push to s3
@@ -77,8 +78,9 @@ def get_songs_data(data):
     return songs_list
 
 def transform_spotify_data_to_s3(event, context):
-    Bucket = "spotify-analytics-raw-data"
-    Key = "raw_data/landing/"
+    Bucket = os.environ.get("s3_bucket")
+    Key = os.environ.get("s3_landing")
+    s3_archive = os.environ.get("s3_archive")
     client = boto3.client('s3')
     spotify_data = []
     spotify_keys = []
@@ -133,7 +135,7 @@ def transform_spotify_data_to_s3(event, context):
             'Bucket': Bucket,
             'Key': key
         }
-        s3_resource.meta.client.copy(copy_source, Bucket, 'raw_data/archive/' + key.split("/")[-1])
+        s3_resource.meta.client.copy(copy_source, Bucket, s3_archive + key.split("/")[-1])
         s3_resource.Object(Bucket, key).delete()
         
         
