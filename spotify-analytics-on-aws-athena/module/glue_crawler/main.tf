@@ -39,10 +39,14 @@ resource "aws_iam_role" "s3_glue_athena_roles" {
 
 # Attach the Glue service role policy to the IAM role
 resource "aws_iam_role_policy_attachment" "glue_service_role_attachment" {
-  role       = aws_iam_role.s3_glue_athena_roles.name  # Update this with the actual IAM role name
+  for_each = aws_iam_role.s3_glue_athena_roles
+  role       = each.value.name  # Update this with the actual IAM role name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
 }
 
+data "aws_s3_bucket" "example_bucket" {
+  bucket = var.s3_bucket
+}
 
 # Create IAM policies for S3 access dynamically based on crawler configurations
 resource "aws_iam_policy" "s3_access_policies" {
@@ -60,20 +64,20 @@ resource "aws_iam_policy" "s3_access_policies" {
         "s3:PutBucket"
       ],
       "Resource": [
-        "${data.aws_s3_bucket.example_bucket[each.key].arn}/${var.crawler_configs[each.key]}/*"
+        "${data.aws_s3_bucket.example_bucket.arn}/${var.crawler_configs[each.key]}/*"
+
       ]
     }]
   })
 }
 
-data "aws_s3_bucket" "example_bucket" {
-  bucket = var.s3_bucket
-}
+
 
 # attach the s3 policy to the IAM role created above
 resource "aws_iam_role_policy_attachment" "s3_access_attachment" {
-  role       = aws_iam_role.s3_glue_athena_roles.name
-  policy_arn = aws_iam_policy.s3_access_policies.arn
+  for_each = aws_iam_role.s3_glue_athena_roles
+  role       = each.value.name
+  policy_arn = aws_iam_policy.s3_access_policies[each.key].arn
 }
 
 variable "crawler_configs" {
@@ -86,24 +90,46 @@ variable "crawler_configs" {
 }
 
 # Create glue crawlers dynamically based on the provided configurations
-resource "aws_glue_crawler" "sales_crawlers" {
+resource "aws_glue_crawler" "crawlers" {
   for_each      = var.crawler_configs
   database_name = aws_glue_catalog_database.sales_db.name
   name          = each.key
-  role          = aws_iam_role.s3_glue_athena_roles.arn
+  role          = aws_iam_role.s3_glue_athena_roles[each.key].arn
 
   s3_target {
-    path = "s3://${data.aws_s3_bucket.example_bucket.arn}/${each.value}/"
+    #path = "s3://${data.aws_s3_bucket.example_bucket.arn}/${each.value}/"
+    path = "s3://${var.s3_bucket}/${each.value}/"
   }
+
 
   recrawl_policy {
     recrawl_behavior = "CRAWL_NEW_FOLDERS_ONLY"
   }
 
+  schema_change_policy {
+    update_behavior = "LOG"
+    delete_behavior = "LOG"
+  }
+
   configuration = jsonencode({
-    Version    = "1.0",
-    Grouping   = {
-      TableGroupingPolicy = "CombineCompatibleSchemas"
+    "Version"    = 1.0,
+    "Grouping"   = {
+      "TableGroupingPolicy" = "CombineCompatibleSchemas"
     }
   })
+}
+
+
+resource "aws_glue_trigger" "crawler_trigger" {
+  for_each        = aws_glue_crawler.crawlers
+  name            = "${each.key}-trigger"
+  type            = "SCHEDULED"
+  schedule        = "cron(0 8 * * ? *)"  # Example schedule: daily at 8:00 AM UTC
+  enabled         = true
+  start_on_creation = true
+
+  actions {
+    job_name = aws_glue_crawler.crawlers[each.key].name
+    # Additional actions if needed
+  }
 }

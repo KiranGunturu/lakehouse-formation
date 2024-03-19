@@ -23,7 +23,7 @@ def write_to_s3(Bucket, s3_path, df, client):
     dateAndTime = get_current_datetime()
     key = s3_path +"_" + dateAndTime + ".csv"
     data_buffer = StringIO()
-    df.to_csv(data_buffer)
+    df.to_csv(, index=False)
     content = data_buffer.getvalue()
     put_object(client, Bucket, key, content)
 
