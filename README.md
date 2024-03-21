@@ -275,6 +275,11 @@ aws glue get-tables --database-name spotify_analytics --query 'TableList[*].Name
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e3440203-f8cb-49a8-8892-d52af01418e3)
 
+# Destroy
+```sh
+terraform destroy
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9453e277-544d-4bbe-9784-8292e0f84761)
 
 
 
