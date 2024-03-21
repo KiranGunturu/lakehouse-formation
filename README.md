@@ -117,7 +117,7 @@ aws configure
     
 
 
-### Deployement.
+# Deployement - Provision S3 Bucket
 #### Lets verify if we already have the bucket that we want to provision
 
 ```sh
