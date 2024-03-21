@@ -200,7 +200,7 @@ terraform apply
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/70278a61-f06f-4e68-8758-64b616e0ca29)
 
-## We now have both the lambda functions working. files coming to landing transformed, and sent to albums, songs, and artists folders. Once Processing is done, they are archived
+## We now have both the lambda functions working. files coming to the landing folder are transformed and sent to albums, songs, and artists folders. Once Processing is done, they are archived.
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/ce1c4ba1-2170-4164-a735-fcb61ba06ad9)
 
 
