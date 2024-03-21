@@ -247,8 +247,7 @@ aws glue list-crawlers
 ```
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/41807836-e252-4f78-812d-3996916d0c5b)
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c88551b4-b7d8-45d8-8c71-f3e8289629fe)
-
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/6e752fdd-ae25-4fdc-b741-daefe377e606)
 
 ```sh
 aws glue list-triggers
