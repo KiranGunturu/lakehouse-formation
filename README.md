@@ -224,6 +224,48 @@ aws glue get-databases
 ```sh
 aws glue get-tables --database-name your-database-name
 ```
+#### Initiate the Terraform
+```sh
+terraform init
+```
+#### Plan the resources
+```sh
+terraform plan
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/7e147026-dbb5-41c4-bf62-137e90e896b2)
+
+#### Provisioning
+```sh
+terraform apply
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/45902fc4-b89b-4940-bc41-ba62221cb06d)
+
+#### Verify
+
+```sh
+aws glue list-crawlers
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/41807836-e252-4f78-812d-3996916d0c5b)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c88551b4-b7d8-45d8-8c71-f3e8289629fe)
+
+
+```sh
+aws glue list-triggers
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/911ebbdd-bc67-47db-a324-890207271622)
+
+```sh
+aws glue get-databases
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c4289073-458e-4707-9097-4cfbf834cf6c)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/2501dbd2-1d2f-443c-b108-097660811fc0)
+
+```sh
+aws glue get-tables --database-name your-database-name
+```
+
+
 
 
 
