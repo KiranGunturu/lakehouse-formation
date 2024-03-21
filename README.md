@@ -135,7 +135,7 @@ cd spotify-analytics-on-aws-athena/provision-s3/
 ```sh
 terraform init
 ```
-#### Create your S3 bucket with input args with the help of a custom s3 module
+#### Create S3 bucket with input args with the help of a custom s3 module
 ```sh
 terraform plan
 ```
@@ -144,7 +144,7 @@ terraform plan
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/4371985a-7d12-41cf-931e-16639e61881f)
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/a2eda09f-8bf5-45b2-b988-f8c207504e8b)
 
-#### Provision your AWS resources
+#### Provision AWS resources
 ```sh
 terraform apply
 ```
@@ -157,6 +157,43 @@ aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "spotify
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b794afa1-7d83-4163-b74f-3777138cab4a)
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9da872d6-0012-4100-bf31-20e931f39d6c)
+
+
+# Deployement - Provision TWO Lambda Functions to Extract RAW Data and Transform, Load the data to S3
+#### Verify if we have any functions.
+
+```sh
+aws lambda list-functions
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/7df83d05-a1aa-4b9a-8bf4-c0ca724a9815)
+
+#### Provision lambda functions one with CloudWatch event and other one with s3 event
+```sh
+cd spotify-analytics-on-aws-athena/provision-lambda/
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/3d08189c-660b-4e2b-94d6-ef0abdb2ef25)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/49613295-0e0b-497d-8716-d7d1bb0fe90d)
+
+#### Initiate the Terraform
+```sh
+terraform init
+```
+#### Create lambda functions with a custom lambda module
+```sh
+terraform plan
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/a97f1515-dc17-4bd9-8bd2-2f3efe49f6e4)
+
+#### Provision AWS resources
+```sh
+terraform apply
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/37c03913-1861-48b6-be7d-d913925d7075)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/05e4aee7-e36c-482b-b928-c17f6c707eae)
+
+
 
 
 
