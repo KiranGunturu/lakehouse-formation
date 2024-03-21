@@ -261,9 +261,20 @@ aws glue get-databases
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c4289073-458e-4707-9097-4cfbf834cf6c)
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/2501dbd2-1d2f-443c-b108-097660811fc0)
 
+### Crawlers Running
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/fa80152d-de8d-4e42-a09d-05369f88436d)
+
+### Crawlers ran and Succeeded
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0b9118a7-e871-4f87-94ec-1f0d5a7a0e16)
+
 ```sh
-aws glue get-tables --database-name your-database-name
+aws glue get-tables --database-name spotify_analytics --query 'TableList[*].Name'
 ```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/531d2ee5-ac00-481b-9b73-9ce5dce2d054)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e3440203-f8cb-49a8-8892-d52af01418e3)
+
 
 
 
