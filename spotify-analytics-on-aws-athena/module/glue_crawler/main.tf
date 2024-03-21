@@ -11,6 +11,12 @@ variable "s3_bucket" {
   
 }
 
+variable "crawler_schedule" {
+  description = "crawler scheudle"
+  default = "on_demand"
+  
+}
+
 # create glue catalog database
 resource "aws_glue_catalog_database" "sales_db" {
   name = var.database_name
@@ -124,7 +130,7 @@ resource "aws_glue_trigger" "crawler_trigger" {
   for_each        = aws_glue_crawler.crawlers
   name            = "${each.key}-trigger"
   type            = "SCHEDULED"
-  schedule        = "cron(0 8 * * ? *)"  # Example schedule: daily at 8:00 AM UTC
+  schedule        = var.crawler_schedule  #Every 15 minutes, between 12:00 AM and 12:59 AM, between day 1 and 31 of the month
   enabled         = true
   start_on_creation = true
 

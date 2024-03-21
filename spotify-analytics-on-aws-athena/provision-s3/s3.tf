@@ -6,7 +6,7 @@ provider "aws" {
 
 # provision S3 bucket to store raw data
 module "s3_raw" {
-    source = "/workspaces/terraform/spotify-analytics-on-aws-athena/module/s3"
+    source = "/workspaces/lakehouse-formation/spotify-analytics-on-aws-athena/module/s3"
     objects = ["raw_data/landing/",
             "raw_data/archive/",
             "transformed_data/albums/",
