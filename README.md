@@ -129,7 +129,8 @@ aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "spotify
 ```sh
 cd spotify-analytics-on-aws-athena/provision-s3/
 ```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/d9a97b11-ffe5-49e8-a732-ee1e16e9b72d)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0920bf73-f127-4519-aa9f-dd4dc7d5fe0c)
+
 
 #### Initiate the Terraform
 ```sh
