@@ -22,9 +22,9 @@ def get_current_datetime():
 def write_to_s3(Bucket, s3_path, df, client):
     dateAndTime = get_current_datetime()
     key = s3_path +"_" + dateAndTime + ".csv"
-    data_buffer = StringIO()
-    df.to_csv(, index=False)
-    content = data_buffer.getvalue()
+    data_buffer = StringIO() #in-memory data buffer
+    df.to_csv(data_buffer, index=False) # writes contents of the DataFrame (df) to the data_buffer in CSV format
+    content = data_buffer.getvalue() # retrieves the CSV data from the data_buffer as a string and stores it in the variable
     put_object(client, Bucket, key, content)
 
 
