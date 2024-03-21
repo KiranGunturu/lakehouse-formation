@@ -193,6 +193,15 @@ terraform apply
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/05e4aee7-e36c-482b-b928-c17f6c707eae)
 
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/bf43ec6f-1695-43dd-b176-2dddf867ae6b)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b3774dc1-1527-41a0-80d4-fd59c362c5bc)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/70278a61-f06f-4e68-8758-64b616e0ca29)
+
+
+
+
 
 
 
