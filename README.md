@@ -204,6 +204,30 @@ terraform apply
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/ce1c4ba1-2170-4164-a735-fcb61ba06ad9)
 
 
+# Deployement - Provision Glue Crawlers, Glue Triggers, Glue Catalog Databases and Glue catalog Tables
+#### Verify if we have any of them
+```sh
+aws glue list-crawlers
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/faedd966-59bb-4710-adc4-4ce6d27f58c8)
+
+```sh
+aws glue list-triggers
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/277148f9-c1a8-43f8-8b9a-d6af2db183f9)
+
+```sh
+aws glue get-databases
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0ad6ae57-e2db-46e4-ba2f-d87cc4c9a25f)
+
+```sh
+aws glue get-tables --database-name your-database-name
+```
+
+
+
+
 
 
 
