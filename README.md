@@ -173,7 +173,8 @@ cd spotify-analytics-on-aws-athena/provision-lambda/
 ```
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b0553a43-4b3c-4562-bc7b-89b567959c9b)
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/49613295-0e0b-497d-8716-d7d1bb0fe90d)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/6b3bdd38-366c-49a0-9f72-11fef798ca25)
+
 
 #### Initiate the Terraform
 ```sh
