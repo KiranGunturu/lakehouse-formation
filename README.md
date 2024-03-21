@@ -123,22 +123,41 @@ aws configure
 ```sh
 aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "spotify"
 ```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9610ec90-b241-42bb-b8a0-64e468ece42f)
 
-#### Initiate the terraform
+#### Provision the S3 bucket and multiple folders using Terraform custom S3 Module
+```sh
+cd spotify-analytics-on-aws-athena/provision-s3/
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/d9a97b11-ffe5-49e8-a732-ee1e16e9b72d)
+
+#### Initiate the Terraform
 ```sh
 terraform init
 ```
-#### Plan your actions
+#### Create your S3 bucket with input args with the help of a custom s3 module
 ```sh
 terraform plan
 ```
-#### Create your aws resources
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/bd3e7fd7-0406-46fd-826b-15309f77898f)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/4371985a-7d12-41cf-931e-16639e61881f)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/a2eda09f-8bf5-45b2-b988-f8c207504e8b)
+
+#### Provision your AWS resources
 ```sh
 terraform apply
 ```
-#### Delete your aws resources
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/ccbf82ad-33cb-48cf-9c96-5b11a437c1dd)
+
+#### Verify the bucket and folders created
 ```sh
-terraform destroy
+aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "spotify"
 ```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b794afa1-7d83-4163-b74f-3777138cab4a)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9da872d6-0012-4100-bf31-20e931f39d6c)
+
+
 
 
