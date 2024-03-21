@@ -129,8 +129,7 @@ aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "spotify
 ```sh
 cd spotify-analytics-on-aws-athena/provision-s3/
 ```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0920bf73-f127-4519-aa9f-dd4dc7d5fe0c)
-
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/7a487670-52ab-4e1c-b209-94bdc60f196b)
 
 #### Initiate the Terraform
 ```sh
@@ -172,7 +171,7 @@ aws lambda list-functions
 ```sh
 cd spotify-analytics-on-aws-athena/provision-lambda/
 ```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/3d08189c-660b-4e2b-94d6-ef0abdb2ef25)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b0553a43-4b3c-4562-bc7b-89b567959c9b)
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/49613295-0e0b-497d-8716-d7d1bb0fe90d)
 
