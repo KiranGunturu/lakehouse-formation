@@ -1,3 +1,6 @@
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/60d474f0-0d0e-4391-9791-3015d08b8347)
+
+
 ### Title: "Automated Data Pipeline for Spotify: Extracting, Transforming, and Analyzing Music Data Using AWS Lambda, S3, Glue, and Athena"
 
 The project aims to develop an end-to-end data pipeline for extracting, transforming, and analyzing data from the Spotify API. Leveraging AWS services such as Lambda, S3, Glue, Athena, and Terraform, the pipeline automates the extraction of data, transformation into structured formats, and enables analytical queries for insights.
