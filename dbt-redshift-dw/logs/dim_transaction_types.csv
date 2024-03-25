@@ -1,0 +1,5 @@
+transaction_type_id|transaction_type_name
+1|Deposit
+2|Withdrawal
+3|Transfer
+4|Payment
