@@ -235,7 +235,14 @@ ls
 ```
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/ef43a482-6260-4f84-b334-75ababe32ec0)
 
+# Upload these files to S3
 
+```sh
+aws s3 ls s3://dbt-redshift-dw/ --recursive --summarize
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e0efb054-ef45-47b3-a6a2-23783496b2b4)
+
+# Provision Glue Catalog Database, CSV Classifier, Glue Crawler, and Glue Trigger to Run Crawler
 
 
 
