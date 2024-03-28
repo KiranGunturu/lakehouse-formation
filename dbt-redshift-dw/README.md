@@ -217,6 +217,30 @@ aws s3 ls s3://dbt-redshift-dw/ --recursive --summarize
 ```
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/f1af1cd9-76ce-4ade-b92c-9703928072df)
 
+# Generate CSV files - Dimension and Fact Table Data with Faker Module
+
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw
+pipenv install -r requirements.txt
+pipenv shell
+cd /data
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/48f70f3e-6090-4652-bea6-565fe3ef68eb)
+
+```sh
+python main.py
+```
+```sh
+ls
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/ef43a482-6260-4f84-b334-75ababe32ec0)
+
+
+
+
+
+
+
 
 
 
