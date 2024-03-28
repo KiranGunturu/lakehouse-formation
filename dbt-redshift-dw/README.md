@@ -182,12 +182,13 @@ aws configure
     
 
 
-### Deployement.
+# Deployement - Provision S3 bucket with Multiple Keys
 #### Lets verify if we already have the bucket that we want to provision
 
 ```sh
-aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "spotify"
+aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "dbt"
 ```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/77465eab-49f5-4c69-9990-da61a5d15937)
 
 #### Initiate the terraform
 ```sh
@@ -197,13 +198,25 @@ terraform init
 ```sh
 terraform plan
 ```
-#### Create your aws resources
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/2c2c77df-d975-4980-af1e-dba355dcdd84)
+
+#### Create your S3 bucket by passing input args to the custom s3 terraform module
 ```sh
 terraform apply
 ```
-#### Delete your aws resources
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/41761647-46ca-4164-8539-38b2cdd3275d)
+
+#### Verify
 ```sh
-terraform destroy
+aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "dbt"
 ```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/a2469981-82a0-4843-a641-370f838484df)
+
+```sh
+aws s3 ls s3://dbt-redshift-dw/ --recursive --summarize
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/f1af1cd9-76ce-4ade-b92c-9703928072df)
+
+
 
 
