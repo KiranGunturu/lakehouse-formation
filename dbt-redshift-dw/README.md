@@ -281,6 +281,12 @@ terraform apply
 
 # Run the Crawler to Create Tables.
 
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/27f4ff37-c7fa-4ca1-8331-3ff3df78e4ab)
+
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b027df97-17b6-4800-ae70-e7672c996733)
+
+
 
 
 
