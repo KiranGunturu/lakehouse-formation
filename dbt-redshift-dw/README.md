@@ -217,7 +217,7 @@ aws s3 ls s3://dbt-redshift-dw/ --recursive --summarize
 ```
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/f1af1cd9-76ce-4ade-b92c-9703928072df)
 
-# Generate CSV files - Dimension and Fact Table Data with Faker Module
+# Generate CSV files (Source Data) - Dimension and Fact Table Data with Faker Module
 
 ```sh
 cd /workspaces/lakehouse-formation/dbt-redshift-dw
@@ -243,6 +243,45 @@ aws s3 ls s3://dbt-redshift-dw/ --recursive --summarize
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e0efb054-ef45-47b3-a6a2-23783496b2b4)
 
 # Provision Glue Catalog Database, CSV Classifier, Glue Crawler, and Glue Trigger to Run Crawler
+### Verify if we have any of them exits so we don't try to create with the same name.
+
+```sh
+aws glue list-crawlers
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e6db4ef1-01fa-47d0-8dcd-4983bb76e2b6)
+
+```sh
+aws glue list-triggers
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c1dc5000-ef03-46a4-a6b4-bcc49ed92682)
+
+```sh
+aws glue get-databases
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c99792c0-64fd-4954-b1f2-5e8f3fe2fd7b)
+
+```sh
+aws glue get-tables --database-name your-database-name
+```
+### Resource Provisioning
+```sh
+cd provision-gluecrawler-classifier-catalogdb
+terraform apply
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/7af592ee-b1b0-4ebc-bcda-0127f57527c8)
+
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/d5124d04-5b2f-4b38-b35f-27ceeda5247d)
+
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9102f7a7-bff6-42d7-9b25-af342ab15196)
+
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/8d4b1e8e-da03-4580-943a-71b0c50c6ac5)
+
+# Run the Crawler to Create Tables.
+
+
 
 
 
