@@ -79,6 +79,12 @@ resource "aws_iam_policy" "s3_access_policy" {
   })
 }
 
+# Attach AmazonS3FullAccess policy to the IAM role
+resource "aws_iam_role_policy_attachment" "s3_full_access_attachment" {
+  role       = aws_iam_role.s3-glue-athena-redshift.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+}
+
 # attach the s3 policy to the IAM role created above
 resource "aws_iam_role_policy_attachment" "s3_access_attachment" {
   role       = aws_iam_role.s3-glue-athena-redshift.name
@@ -94,28 +100,52 @@ resource "aws_glue_classifier" "csv_classifier" {
 
   csv_classifier {
     allow_single_column    = true
-    contains_header        = "PRESENT"
+    contains_header        = "UNKNOWN"
     delimiter              = "|"
     disable_value_trimming = false
-    quote_symbol   = "\u0022"
+    quote_symbol           = "\u0022"
   }
+  /*
+  serde_info {
+    name = "openCSVSerde"
+    serialization_library = "org.apache.hadoop.hive.serde2.OpenCSVSerde"
+    parameters = {
+      "separatorChar" = "|"
+      "quoteChar"     = "\u0022"
+      # Add other parameters as needed for openCSVSerde
+    }
+  }
+  */
+}
+
+variable "s3_folders" {
+  type    = list(string)
+  default = []
 }
 
 # create glue crawler
-resource "aws_glue_crawler" "sales_crawler_test" {
+resource "aws_glue_crawler" "my_crawler" {
   database_name = aws_glue_catalog_database.my_db.name
   name          = var.aws_glue_crawler_name
   role          = aws_iam_role.s3-glue-athena-redshift.arn
   table_prefix = var.table_prefix
   classifiers        = [aws_glue_classifier.csv_classifier.name]
 
-  s3_target {
-    path = "s3://${var.s3_bucket}"
+  dynamic "s3_target" {
+    for_each = var.s3_folders
+
+    content {
+      path = s3_target.value
+    }
   }
+  /*
+  s3_target {
+    path = "s3://${var.s3_bucket}/*"
+  }*/
 
 
    recrawl_policy { 
-     recrawl_behavior = "CRAWL_NEW_FOLDERS_ONLY"
+     recrawl_behavior = "CRAWL_EVERYTHING"
    }
 
   configuration = <<EOF
