@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"glue_crawler","Source":"file:///workspaces/lakehouse-formation/dbt-redshift-dw/module/vpc","Dir":".terraform/modules/glue_crawler"},{"Key":"vpc","Source":"file:///workspaces/lakehouse-formation/dbt-redshift-dw/module/vpc","Dir":".terraform/modules/vpc"}]}

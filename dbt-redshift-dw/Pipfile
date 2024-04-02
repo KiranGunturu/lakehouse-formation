@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 faker = "*"
+boto3 = "*"
 
 [dev-packages]
 
