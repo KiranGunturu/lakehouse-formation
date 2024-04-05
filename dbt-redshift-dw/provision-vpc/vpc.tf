@@ -1,4 +1,4 @@
-# provision athena db and glue crawler , assign proper permission to IAM role.
+# provision vpc, private and public subnets, s3 endpoint, igw and route tables association.
 module "vpc" {
     source = "/workspaces/lakehouse-formation/dbt-redshift-dw/module/vpc"
     cidr = "120.31.3.0/24" # gives 256 IPs

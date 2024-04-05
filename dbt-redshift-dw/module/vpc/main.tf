@@ -137,3 +137,12 @@ resource "aws_route" "public_route_to_igw" {
   gateway_id             = aws_internet_gateway.my_igw.id
 }
 
+# Create redshift cluster subnet group
+resource "aws_redshift_subnet_group" "aws_redshift_subnet_group" {
+  name       = "aws_redshift_subnet_group"
+  subnet_ids = [aws_subnet.public_subnets.id, aws_subnet.private_subnets.id]
+
+  tags = {
+    environment = "Dev"
+  }
+}

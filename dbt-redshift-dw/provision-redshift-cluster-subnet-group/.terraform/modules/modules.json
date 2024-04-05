@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"redshift_cluster_subnet_group","Source":"file:///workspaces/lakehouse-formation/dbt-redshift-dw/module/redshift-cluster-subnet-group","Dir":".terraform/modules/redshift_cluster_subnet_group"}]}
