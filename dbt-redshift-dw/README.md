@@ -318,6 +318,20 @@ terraform apply
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/00b5633f-e991-4016-b234-e900cf972453)
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/467f2cd9-ea14-4325-b7ca-8d2fa4790abd)
 
+### Add an inbound rule to the VPC security group to allow communication to Redshift from where we are connecting. Ex: MYip
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/f5080e7a-b4b7-41ca-a536-fdc13381da5e)
+
+### Associate private subnet to the igw.
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9a04ff07-deeb-4c87-a796-c5acf9a52302)
+
+# Connect to Redshift using DBeaver.
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/a042ab7b-5f4a-49dc-a77c-d5efe80dbe0e)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/770b5911-50cf-48db-ab48-114584ddedb3)
+
 
 
 
