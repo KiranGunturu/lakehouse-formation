@@ -310,6 +310,14 @@ terraform apply
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/27237c83-0a9a-4927-8a0c-a293fe93a352)
 
 
+# Provision Redshift Cluster
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/provision-redshift-cluster-subnet-group
+terraform apply
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/00b5633f-e991-4016-b234-e900cf972453)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/467f2cd9-ea14-4325-b7ca-8d2fa4790abd)
+
 
 
 
