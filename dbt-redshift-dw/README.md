@@ -322,7 +322,7 @@ terraform apply
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/f5080e7a-b4b7-41ca-a536-fdc13381da5e)
 
-### Associate private subnet to the igw.
+### Associate the private subnet route table to the Internet gateway because when the Redshift cluster is in the private subnet, even if we make it publicly accessible will not help
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9a04ff07-deeb-4c87-a796-c5acf9a52302)
 
