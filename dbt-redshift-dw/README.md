@@ -287,6 +287,32 @@ terraform apply
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b027df97-17b6-4800-ae70-e7672c996733)
 
 
+# Provision VPC, Private and Public subnets, Route tables, S3 endpoint and Internet Gateway.
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/provision-vpc
+terraform apply
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/535ca77c-f116-4e22-ae9d-19c50f5e734d)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9b2822ff-a8db-47f8-b560-aff1bed8df67)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/d89d074e-7c27-41a0-a3a5-2faae9b83834)
+
+# Provision Redshift Cluster Subnet Group
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/provision-redshift-cluster-subnet-group
+terraform apply
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c4a8898a-844e-404d-9d33-dc60f261428d)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/6b2f59c6-f97a-4f50-9332-2fc013b85b6e)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/27237c83-0a9a-4927-8a0c-a293fe93a352)
+
+
+
+
+
 
 
 
