@@ -105,8 +105,6 @@ resource "aws_redshift_cluster" "example_cluster" {
   cluster_type             = var.cluster_type
   cluster_subnet_group_name = var.cluster_subnet_group_name
   publicly_accessible      = var.publicly_accessible
-  skip_final_snapshot = true
-  final_snapshot_identifier = "foo"
   iam_roles = [aws_iam_role.redshift_s3_access_role.arn]
 }
 
