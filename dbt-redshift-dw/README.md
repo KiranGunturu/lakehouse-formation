@@ -333,11 +333,12 @@ terraform apply
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/770b5911-50cf-48db-ab48-114584ddedb3)
 
 # Create External Schema from Glue Catalog Database.
-### Attach the below policies to IAM role associated with the Redshift Cluster
+### Attach the below policies to the IAM role associated with the Redshift Cluster
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/f4d10102-b4e5-400d-be66-ab4e997ac318)
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/eb10feee-83ed-4052-92b9-ef118ce39dcd)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/356834e3-013b-4fac-9db3-0e2101c59744)
+
 
 
 
