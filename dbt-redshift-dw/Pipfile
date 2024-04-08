@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 faker = "*"
 boto3 = "*"
+dbt-redshift = "*"
 
 [dev-packages]
 

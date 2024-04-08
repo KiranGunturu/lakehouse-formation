@@ -1,0 +1,31 @@
+[0m02:49:12.442047 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f128ae52ef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f128b5631f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f128b563190>]}
+
+
+============================== 02:49:12.453169 | 502d9e2f-2e26-4779-a4c5-2353163193f9 ==============================
+[0m02:49:12.453169 [info ] [MainThread]: Running with dbt=1.7.11
+[0m02:49:12.456890 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'profiles_dir': '/home/codespace/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt init', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m02:49:12.458472 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse dict {'dir': PosixPath('/home/codespace/.dbt')}
+[0m02:49:12.460566 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m02:49:55.132920 [debug] [MainThread]: Starter project path: /home/codespace/.local/share/virtualenvs/dbt-redshift-dw-pAh4MAZl/lib/python3.10/site-packages/dbt/include/starter_project
+[0m02:49:55.137839 [info ] [MainThread]: 
+Your new dbt project "dbt_redshift_dw" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m02:49:55.139237 [info ] [MainThread]: Setting up your profile.
+[0m02:54:07.251720 [info ] [MainThread]: Profile dbt_redshift_dw written to /home/codespace/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m02:54:07.254306 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 294.81662, "process_user_time": 2.523488, "process_kernel_time": 0.124377, "process_mem_max_rss": "91128", "process_in_blocks": "2976", "process_out_blocks": "88"}
+[0m02:54:07.255727 [debug] [MainThread]: Command `dbt init` succeeded at 02:54:07.255338 after 294.82 seconds
+[0m02:54:07.256904 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f128ae52ef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f128d079c00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f128915f8e0>]}
+[0m02:54:07.258558 [debug] [MainThread]: Flushing usage events

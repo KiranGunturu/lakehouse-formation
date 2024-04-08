@@ -3,4 +3,4 @@ random
 Faker
 boto3
 sys
-json
+dbt-redshift
