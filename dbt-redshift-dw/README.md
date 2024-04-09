@@ -284,7 +284,7 @@ terraform apply
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/27f4ff37-c7fa-4ca1-8331-3ff3df78e4ab)
 
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b027df97-17b6-4800-ae70-e7672c996733)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b16f5e8a-b7c3-46e1-918b-f64203d8a1c8)
 
 
 # Provision VPC, Private and Public subnets, Route tables, S3 endpoint and Internet Gateway.
