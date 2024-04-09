@@ -349,6 +349,10 @@ dbt init
 ```
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/5064e063-d035-4fdf-ada7-e94026353288)
 
+### Verify the Redshift Connection from the dbt project.
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/fc92416b-dc88-4102-a499-6c4d19d482a1)
+
+
 
 
 
