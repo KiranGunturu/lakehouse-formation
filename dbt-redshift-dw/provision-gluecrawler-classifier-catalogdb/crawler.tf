@@ -24,7 +24,8 @@ module "glue_crawler" {
         "s3://dbt-redshift-dw/landing/investment_types/",
         "s3://dbt-redshift-dw/landing/loans/",
         "s3://dbt-redshift-dw/landing/locations/",
-        "s3://dbt-redshift-dw/landing/transaction_types/"
+        "s3://dbt-redshift-dw/landing/transaction_types/",
+        "s3://dbt-redshift-dw/landing/customers/"
         ]
     
 }
