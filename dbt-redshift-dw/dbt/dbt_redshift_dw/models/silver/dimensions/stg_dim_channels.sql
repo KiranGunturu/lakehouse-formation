@@ -13,5 +13,5 @@
 select
     channel_id,
     channel_name,
-    get_date() as created_at
+    getdate() as created_at
 from {{ var('bronze_schema') }}.ext_channels

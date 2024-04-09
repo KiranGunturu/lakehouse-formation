@@ -35,9 +35,9 @@ SELECT
     s.investment_amount,
     s.investment_return
 FROM source_data s
-LEFT JOIN {{ ref('dim_date') }} as d on s.date_id = d.date_id
-LEFT JOIN {{ ref('dim_account') }} as a on s.account_id = a.account_id
-LEFT JOIN {{ ref('dim_investment_type') }} as it on s.investment_type_id = it.investment_type_id
-LEFT JOIN {{ ref('dim_currency') }} as c on s.currency_id = c.currency_id
+LEFT JOIN {{ ref('dim_dates') }} as d on s.date_id = d.date_id
+LEFT JOIN {{ ref('dim_accounts') }} as a on s.account_id = a.account_id
+LEFT JOIN {{ ref('dim_investment_types') }} as it on s.investment_type_id = it.investment_type_id
+LEFT JOIN {{ ref('dim_currencies') }} as c on s.currency_id = c.currency_id
 
 

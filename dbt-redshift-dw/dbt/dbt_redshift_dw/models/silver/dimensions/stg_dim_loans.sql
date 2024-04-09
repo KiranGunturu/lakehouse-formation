@@ -15,6 +15,6 @@ select
     loan_type,
     loan_amount,
     interest_rate,
-    get_date() as created_at
+    getdate() as created_at
 from {{ var('bronze_schema') }}.ext_loans
 

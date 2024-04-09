@@ -17,5 +17,5 @@ select
     account_type,
     account_balance,
     credit_score,
-    get_date() as created_at
+    getdate() as created_at
 from {{ var('bronze_schema') }}.ext_accounts

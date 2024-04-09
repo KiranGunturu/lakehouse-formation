@@ -16,7 +16,7 @@ select
     "day",
     "month",
     "year",
-    'weekday",
-    get_date() as created_at
+    "weekday",
+    getdate() as created_at
 from {{ var('bronze_schema') }}.ext_dates
 

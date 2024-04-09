@@ -13,6 +13,6 @@
 select
     transaction_type_id,
     transaction_type_name,
-    get_date() as created_at
+    getdate() as created_at
 from {{ var('bronze_schema') }}.ext_transaction_types
 

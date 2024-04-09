@@ -39,8 +39,8 @@ SELECT
     s.interaction_type,
     s.interaction_rating
 FROM source_data s
-INNER JOIN {{ ref('dim_date') }} as d on s.date_id = d.date_id
-INNER JOIN {{ ref('dim_customer') }} as c on s.customer_id = c.customer_id
-INNER JOIN {{ ref('dim_location') }} as l on s.location_id = l.location_id
-INNER JOIN {{ ref('dim_channel') }} as ch on s.channel_id = ch.channel_id
+INNER JOIN {{ ref('dim_dates') }} as d on s.date_id = d.date_id
+INNER JOIN {{ ref('dim_customers') }} as c on s.customer_id = c.customer_id
+INNER JOIN {{ ref('dim_locations') }} as l on s.location_id = l.location_id
+INNER JOIN {{ ref('dim_channels') }} as ch on s.channel_id = ch.channel_id
 
