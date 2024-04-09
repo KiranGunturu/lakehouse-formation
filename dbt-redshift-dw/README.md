@@ -339,6 +339,18 @@ terraform apply
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/356834e3-013b-4fac-9db3-0e2101c59744)
 
+# dbt Project Setup
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw
+pipenv install dbt-redshift
+mkdir dbt
+pipenv 
+dbt init
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/5064e063-d035-4fdf-ada7-e94026353288)
+
+
+
 
 
 
