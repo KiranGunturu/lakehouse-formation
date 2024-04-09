@@ -23,6 +23,11 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+vars:
+  bronze_schema: dev_bronze
+  silver_schema: dev_silver
+  gold_schema: dev_gold
+
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -33,5 +38,17 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_redshift_dw:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    silver:
+      dimensions:
+        +materialized: table
+        tags: ['dimensions']
+      facts:
+        +materialized: table
+        tags: ['facts']
+    gold:
+      dimensions:
+        +materialized: table
+        tags: ['dimensions']
+      facts:
+        +materialized: table
+        tags: ['facts']
