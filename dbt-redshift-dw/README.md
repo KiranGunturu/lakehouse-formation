@@ -355,7 +355,7 @@ cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw
 ```
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/fc92416b-dc88-4102-a499-6c4d19d482a1)
 
-# Prepare DBT models to create and load silver and gold layers from bronze.
+# Prepare DBT models to create and load silver and gold layers derived from bronze
 
 ```sh
 cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw
@@ -374,9 +374,15 @@ mkdir  modules/silver/dimensions modules/silver/facts modules/gold/dimensions mo
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/3769b40d-6289-427e-b9ed-ed9609e0e8aa)
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/03a25844-ad72-46ae-a2d4-ac8333524043)
 
+### Prepare the Models for all other dim and facts. Visit the path /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw/models
 
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/7cd01ea5-7eed-4fe0-a54c-c6e23ee72d4a)
 
-
+# Compile all the DBT models prepared to verify if there are any syntax and dependency errors
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw/
+dbt compile
+```
 
 
 
