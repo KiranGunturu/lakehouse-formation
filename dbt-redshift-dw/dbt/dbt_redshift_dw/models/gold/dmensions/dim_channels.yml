@@ -1,0 +1,17 @@
+version 2:
+
+models:
+  name: dim_channels
+  description: "dimension table for channels"
+  columns:
+    - name: channel_id
+      description:  "The primary key for the channels dimension"
+      tests:
+        - unique
+        - not_null
+    - name: channel_name
+      description: "the name of the channel"
+      tests:
+        - not_null
+    - name: created_at
+      description: "the date channel entry is created"
