@@ -383,6 +383,19 @@ mkdir  modules/silver/dimensions modules/silver/facts modules/gold/dimensions mo
 cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw/
 dbt compile
 ```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/45f8fbbc-0fd4-4761-aa52-912a4d7937a9)
+
+### All models are successfully compiled
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c504b054-2f7d-4c3b-b638-d8d0664f7e46)
+
+# Run / Build all models.
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw/
+dbt run
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/88728840-4a48-4834-8747-8b6a75768134)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9fe7cf37-e2a8-4199-a8a1-66e6b8e45499)
+
 
 
 
