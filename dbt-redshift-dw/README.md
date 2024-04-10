@@ -339,7 +339,7 @@ terraform apply
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/356834e3-013b-4fac-9db3-0e2101c59744)
 
-# dbt Project Setup
+# dbt Project Setup - Implement Medallion Architecture In Redshift.
 ```sh
 cd /workspaces/lakehouse-formation/dbt-redshift-dw
 pipenv install dbt-redshift
