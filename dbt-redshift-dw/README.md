@@ -355,6 +355,28 @@ cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw
 ```
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/fc92416b-dc88-4102-a499-6c4d19d482a1)
 
+# Prepare DBT models to create and load silver and gold layers from bronze.
+
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw
+mkdir  modules/silver/dimensions modules/silver/facts modules/gold/dimensions modules/gold/facts
+```
+### Ex: accounts dimension DBT model from Silver layer
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/534ed0c9-a794-4a86-a82a-fbfd7275a230)
+
+### Ex: customer interactions fact DBT model from Silver layer
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/993b1b07-0fed-49cb-b46e-086ed19ead37)
+
+### Ex: accounts dimension DBT model from gold layer
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/3769b40d-6289-427e-b9ed-ed9609e0e8aa)
+
+### Ex: customer interactions fact DBT model from gold layer
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/03a25844-ad72-46ae-a2d4-ac8333524043)
+
+
+
+
+
 
 
 
