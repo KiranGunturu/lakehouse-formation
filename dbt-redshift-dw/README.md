@@ -368,9 +368,10 @@ mkdir  modules/silver/dimensions modules/silver/facts modules/gold/dimensions mo
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/993b1b07-0fed-49cb-b46e-086ed19ead37)
 
 ### Ex: accounts dimension DBT model from gold layer
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/3769b40d-6289-427e-b9ed-ed9609e0e8aa)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/4da901e9-87a6-4114-9c58-4e6965aa0165)
 
 ### Ex: customer interactions fact DBT model from gold layer
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/3769b40d-6289-427e-b9ed-ed9609e0e8aa)
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/03a25844-ad72-46ae-a2d4-ac8333524043)
 
 
