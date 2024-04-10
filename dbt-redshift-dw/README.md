@@ -399,6 +399,19 @@ dbt run
 # Both gold and silver layer schemas are created in Redshift
 
 # Data Quality Test Cases
+### Ex: accounts table from the gold layer
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/10c89847-7162-4a5f-95d3-53a241d5764a)
+### Refer below for all other test case YAML files
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b317e053-b08b-4cda-8bfa-6977e18f9b7e)
+
+# Do compile and test all the DQ checks.
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw/
+dbt compile
+dbt test
+dbt run
+```
+
 
 
 
