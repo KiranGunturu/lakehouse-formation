@@ -1,40 +1,40 @@
 version 2:
 
 models:
-  name: dim_accounts
-  description: "A dimension table for account"
-  columns:
-    - name: account_id
-      description: "The primary key for the accounts dimension"
-      tests:
-        - unique
-        - not_null
-    - name: customer_id
-      description: "FK to the customer dimension"
-      tests:
-        - not_null
-        - relationships:
-            to: ref('dim_customer')
-            field: customer_id
-    - name: account_number
-      description: "A unique account number for the customer"
-      tests:
-        - unique
-        - not_null
-    - name: account_type
-      description: "the type of account"
-      tests:
-        - not_null
-    - name: account_balance
-      description: "account balance of the customer account"
-      tests:
-        - not_null
-    - name: credit_score
-      description: "the credit score asscociated with the account"
-      tests:
-        - not_null
-    - name: created_at
-      description: "event time when the record created or updated"
-      tests:
-        - not_null
+  - name: dim_accounts
+    description: "A dimension table for account"
+    columns:
+      - name: account_id
+        description: "The primary key for the accounts dimension"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "FK to the customer dimension"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: account_number
+        description: "A unique account number for the customer"
+        tests:
+          - unique
+          - not_null
+      - name: account_type
+        description: "the type of account"
+        tests:
+          - not_null
+      - name: account_balance
+        description: "account balance of the customer account"
+        tests:
+          - not_null
+      - name: credit_score
+        description: "the credit score asscociated with the account"
+        tests:
+          - not_null
+      - name: created_at
+        description: "event time when the record created or updated"
+        tests:
+          - not_null
 

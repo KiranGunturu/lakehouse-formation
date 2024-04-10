@@ -1,0 +1,35 @@
+version 2:
+
+models:
+  - name: dim_dates
+    description: "dimension table to store calender values"
+    columns:
+      - name: date_id
+        description: "the primary key for the date dimension"
+        tests:
+          - unique
+          - not_null
+      - name: date
+        description: "date value"
+        tests:
+          - not_null
+      - name: day
+        description: "week of the day"
+        tests:
+          - not_null
+      - name: month
+        description: "month of the day"
+        tests:
+          - not_null
+      - name: year
+        description: "year of the day"
+        tests:
+          - not_null
+      - name: weekday
+        description: "week of the day"
+        tests:
+          - not_null
+      - name: created_at
+        description: "date when the customer record created in the table"
+        tests:
+          - not_null

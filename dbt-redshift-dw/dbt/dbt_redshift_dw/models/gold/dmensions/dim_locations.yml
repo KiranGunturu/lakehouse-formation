@@ -1,0 +1,32 @@
+version 2:
+
+models:
+  - name: dim_locations
+    description: "dimension table for locations"
+    columns:
+      - name: location_id
+        description: "unique id for location"
+        tests:
+          - unique
+          - not_null
+      - name: city
+        description: "value of the city column"
+        tests:
+          - not_null
+      - name: state
+        description: "state value"
+        tests:
+          - not_null
+      - name: country
+        description: "state value"
+        tests:
+          - not_null
+      - name: postal_code
+        description: "zip code value"
+        tests:
+          - not_null
+      - name: created_at
+        description: "date when the record was created"
+        tests:
+          - not_null
+

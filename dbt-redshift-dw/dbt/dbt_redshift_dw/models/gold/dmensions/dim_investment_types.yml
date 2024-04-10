@@ -1,0 +1,19 @@
+version 2:
+
+models:
+  - name: dim_investment_types
+    description: "dimension table for investment types"
+    columns:
+      - name: investment_type_id
+        description: "unique id for investment type table dimension"
+        tests:
+          - unique
+          - not_null
+      - name: investment_type_name
+        description: "type of the investment"
+        tests:
+          - not_null
+      - name: created_at
+        description: "date when record created"
+        tests:
+          - not_null

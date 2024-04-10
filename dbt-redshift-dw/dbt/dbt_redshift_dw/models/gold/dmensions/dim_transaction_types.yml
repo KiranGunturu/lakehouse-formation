@@ -1,0 +1,21 @@
+version 2:
+
+models:
+  - name: dim_transaction_types
+    description: "dimension table for transaction types"
+    columns:
+      - name: transaction_type_id
+        description: "unique id for the transaction type id"
+        tests:
+          - unique
+          - not_null
+      - name: transaction_type_name
+        description: "name of the transaction type"
+        tests:
+          - not_null
+      - name: created_at
+        description: "date when record created"
+        tests:
+          - not_null
+
+    

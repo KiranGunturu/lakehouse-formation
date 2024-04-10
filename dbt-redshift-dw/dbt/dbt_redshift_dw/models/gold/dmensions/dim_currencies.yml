@@ -1,22 +1,22 @@
 version 2:
 
 models:
-  name: dim_currencies
-  description: "A dimension table for the currencies"
-  columns:
-    - name: currency_id
-      description: "the original currency id"
-      tests:
-        - not_null
-    - name: currency_code
-      description: "the currency code, in uppercase"
-      tests:
-        - not_null
-    - name: currency_name
-      description: "the currency name, with first letter in upper case"
-      tests:
-        - not_null
-    - name: created_at
-      description: "data when the currency id record was created"
-      tests:
-        - not_null
+  - name: dim_currencies
+    description: "A dimension table for the currencies"
+    columns:
+      - name: currency_id
+        description: "the original currency id"
+        tests:
+          - not_null
+      - name: currency_code
+        description: "the currency code, in uppercase"
+        tests:
+          - not_null
+      - name: currency_name
+        description: "the currency name, with first letter in upper case"
+        tests:
+          - not_null
+      - name: created_at
+        description: "data when the currency id record was created"
+        tests:
+          - not_null
