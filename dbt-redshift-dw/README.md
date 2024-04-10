@@ -396,6 +396,9 @@ dbt run
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/88728840-4a48-4834-8747-8b6a75768134)
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9fe7cf37-e2a8-4199-a8a1-66e6b8e45499)
 
+# Both gold and silver layer schemas are created in Redshift
+
+# Data Quality Test Cases
 
 
 
