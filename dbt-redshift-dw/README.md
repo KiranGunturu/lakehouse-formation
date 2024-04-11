@@ -429,6 +429,13 @@ dbt run
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/5d9959d0-670f-49a5-83e7-b96251659bbe)
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e2044b11-5612-4fdf-9cf5-948fc1e68a95)
 
+# Write and test few custom DQ checks to verify the following.
+#### 
+* Are my account types valid?
+* Do we have credit score values in a defined range?
+* any dupes in the currency dimension?
+* any duplicate account numbers?
+* any records with negative account balance?
 
 
 
