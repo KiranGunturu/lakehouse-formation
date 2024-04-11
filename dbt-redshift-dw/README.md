@@ -472,6 +472,8 @@ dbt docs generate
 ```sh
 dbt docs serve
 ```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/28817f1d-ffb2-4c75-bfdb-5b8493b30fa5)
+
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/1f5a2f71-1687-47a5-91c1-3e9a0d23201e)
 
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0c9b65fc-edb6-413d-af6e-cdb9a9ce8e38)
