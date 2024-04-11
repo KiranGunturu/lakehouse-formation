@@ -1,4 +1,4 @@
-### Title: "Medalian Data Pipeline: Orchestrating Data Warehousing and Analytics on AWS"
+### Title: "Medallion Data Pipeline: Orchestrating Data Warehousing and Analytics on AWS"
 
 The Medalian Data Pipeline integrates AWS Redshift, S3, and Glue with dbt to orchestrate a robust data warehousing and analytics ecosystem. It organizes data into Bronze, Silver, and Gold layers, ensuring data integrity and enabling seamless transformations. With automated ingestion, transformation, enrichment, and consumption processes, it empowers stakeholders with curated, business-ready insights for informed decision-making.
 
