@@ -423,9 +423,13 @@ dbt test
 dbt run
 ```
 # Compiled
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/bccb027b-2f17-44bb-bfde-e6a5b4512425)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/8d446c56-adf7-4295-8233-0b086dbd18db)
 
 # Tested
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/5d9959d0-670f-49a5-83e7-b96251659bbe)
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e2044b11-5612-4fdf-9cf5-948fc1e68a95)
+
+
 
 
 
