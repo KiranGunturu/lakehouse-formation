@@ -1,2 +1,0 @@
-https://stackoverflow.com/questions/69526135/terraform-main-tf-to-differnt-name-convention
-https://stackoverflow.com/questions/39803182/terraform-use-case-to-create-multiple-almost-identical-copies-of-infrastructure
