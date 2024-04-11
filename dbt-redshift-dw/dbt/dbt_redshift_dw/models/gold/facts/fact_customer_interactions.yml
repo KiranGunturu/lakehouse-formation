@@ -1,0 +1,65 @@
+version 2:
+
+models:
+  - name: fact_customer_interactions
+    description: "A fact table for customer interactions."
+    config:
+      materialized: view
+      alias: 'fact_customer_interactions'
+      schema: "{{ var('gold_schema') }}"
+      incremental_strategy: 'delete+insert'
+      primary_key: 'interaction_id'
+      distribution: 'even'
+    columns:
+      - name: interaction_id
+        description: "The unique identifier for each customer interaction."
+        tests:
+          - unique
+          - not_null
+      - name: date_id
+        description: "The foreign key to the dim_date dimension table, indicating the date of the interaction."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: date_id
+      - name: interaction_date
+        description: "The date of the interaction, derived from the dim_date dimension."
+        tests:
+          - not_null
+      - name: customer_id
+        description: "The foreign key to the dim_customer dimension table, identifying the customer involved in the interaction."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: first_name
+        description: "The first name of the customer involved in the interaction."
+      - name: last_name
+        description: "The last name of the customer involved in the interaction."
+      - name: city
+        description: "The city of the customer's address."
+      - name: state
+        description: "The state of the customer's address."
+      - name: postal_code
+        description: "The postal code of the customer's address."
+      - name: country
+        description: "The country of the customer's address."
+      - name: channel_id
+        description: "The foreign key to the dim_channel dimension table, indicating the channel through which the interaction occurred."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_channels')
+              field: channel_id
+      - name: channel_name
+        description: "The name of the channel through which the interaction occurred, derived from the dim_channel dimension."
+      - name: interaction_type
+        description: "The type of interaction that occurred."
+      - name: interaction_rating
+        description: "The rating of the interaction."
+
+
+
+

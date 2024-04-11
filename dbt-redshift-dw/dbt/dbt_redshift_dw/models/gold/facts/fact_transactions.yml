@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fact_transactions
+    description: "This table captures all transactional data, including the transaction type, channel, location, account, and currency involved, as well as the transaction amount and status."
+    config:
+      materialized: 'table'
+      alias: 'fact_transactions'
+      schema: "{{ var('gold_schema') }}"
+      incremental_strategy: 'delete+insert'
+      primary_key: 'transaction_id'
+      distribution: 'even'
+    columns:
+      - name: transaction_id
+        description: "The unique identifier for each transaction."
+        tests:
+          - unique
+          - not_null
+
+      - name: date_id
+        description: "The foreign key to the dim_date dimension table, indicating the date of the transaction."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: date_id
+
+      - name: transaction_amount
+        description: "The amount of the transaction."
+        tests:
+          - not_null
+
+      - name: transaction_status
+        description: "The status of the transaction (e.g., completed, pending, failed)."
+        tests:
+          - not_null

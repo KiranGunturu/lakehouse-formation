@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: fact_investments
+    description: "This table captures investment transactions, including the amount invested, the return on investment, and links to dimensions such as date, account, and investment type."
+    config:
+      materialized: 'table'
+      alias: 'fact_investments'
+      schema: "{{ var('gold_schema') }}"
+      incremental_strategy: 'delete+insert'
+      primary_key: 'investment_id'
+      distribution: 'even'
+    columns:
+      - name: date_id
+        description: "The foreign key to the dim_date dimension table, indicating the date of the investment."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: date_id
+
+      - name: investment_id
+        description: "The unique identifier for each investment transaction."
+        tests:
+          - unique
+          - not_null
+
+      - name: investment_date
+        description: "The actual date of the investment, derived from the dim_date dimension."
+        tests:
+          - not_null
+
+      - name: account_number
+        description: "The account number, derived from the dim_account dimension."
+
+      - name: account_type
+        description: "The type of account, derived from the dim_account dimension."
+
+      - name: credit_score
+        description: "The credit score of the account holder, derived from the dim_account dimension."
+
+      - name: investment_type_id
+        description: "The foreign key to the dim_investment_type dimension table, indicating the type of investment."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_investment_types')
+              field: investment_type_id
+
+      - name: investment_type_name
+        description: "The name of the investment type, derived from the dim_investment_type dimension."
+
+      - name: investment_amount
+        description: "The amount of money invested in the transaction."
+        tests:
+          - not_null
+
+      - name: investment_return
+        description: "The return on the investment transaction."
+        tests:
+          - not_null

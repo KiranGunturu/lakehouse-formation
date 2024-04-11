@@ -1,0 +1,65 @@
+version 2:
+
+models:
+  - name: fact_daily_balances
+    description: "A fact table for daily balances."
+    config:
+      materialized: view
+      alias: 'fact_daily_balances'
+      schema: "{{ var('gold_schema') }}"
+      incremental_strategy: 'delete+insert'
+      primary_key: 'balance_id'
+      distribution: 'even'
+    columns:
+      - name: balance_id
+        description: "The unique identifier for each daily balance record."
+        tests:
+          - unique
+          - not_null
+      - name: date_id
+        description: "The foreign key to the dim_date dimension table, indicating the date of the balance."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: date_id
+      - name: account_id
+        description: "The foreign key to the dim_account dimension table, identifying the account associated with the balance."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_accounts')
+              field: account_id
+      - name: account_number
+        description: "The account number associated with the balance."
+        tests:
+          - not_null
+      - name: account_type
+        description: "The type of account associated with the balance."
+        tests:
+          - not_null
+      - name: credit_score
+        description: "The credit score associated with the account."
+        tests:
+          - not_null
+      - name: currency_code
+        description: "The code of the currency associated with the balance."
+        tests:
+          - not_null
+      - name: currency_name
+        description: "The name of the currency associated with the balance."
+        tests:
+          - not_null
+      - name: opening_balance
+        description: "The opening balance for the account on the date."
+        tests:
+          - not_null
+      - name: closing_balance
+        description: "The closing balance for the account on the date."
+        tests:
+          - not_null
+      - name: average_balance
+        description: "The average balance for the account on the date."
+        tests:
+          - not_null
+
