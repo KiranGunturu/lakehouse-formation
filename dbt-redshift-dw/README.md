@@ -2,6 +2,9 @@
 
 The Medalian Data Pipeline integrates AWS Redshift, S3, and Glue with dbt to orchestrate a robust data warehousing and analytics ecosystem. It organizes data into Bronze, Silver, and Gold layers, ensuring data integrity and enabling seamless transformations. With automated ingestion, transformation, enrichment, and consumption processes, it empowers stakeholders with curated, business-ready insights for informed decision-making.
 
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c9321f1f-3966-4334-a063-b1f4bb7229ab)
+
+
 ### Prerequisites
 
 * AWS Account
@@ -479,7 +482,21 @@ dbt docs serve
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0c9b65fc-edb6-413d-af6e-cdb9a9ce8e38)
 
 
+# Appendix
 
+https://registry.terraform.io/providers/hashicorp/aws/3.74.2/docs/resources/glue_classifier
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_crawler
+https://github.com/hashicorp/terraform-provider-aws/issues/33787
+https://stackoverflow.com/questions/57498330/specify-a-serde-serialization-lib-with-aws-glue-crawler
+https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/redshift_cluster
+https://github.com/hashicorp/terraform-provider-aws/issues/33787
+https://stackoverflow.com/questions/54752865/adding-multiple-s3-paths-to-glue-crawler-with-terraform
+https://stackoverflow.com/questions/55498961/access-redshift-cluster-deployed-in-a-vpc
+https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_EXTERNAL_SCHEMA.html
+https://stackoverflow.com/questions/69526135/terraform-main-tf-to-differnt-name-convention
+https://stackoverflow.com/questions/39803182/terraform-use-case-to-create-multiple-almost-identical-copies-of-infrastructure
+https://www.databricks.com/glossary/medallion-architecture
 
 
 
