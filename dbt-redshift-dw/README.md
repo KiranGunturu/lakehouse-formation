@@ -2,8 +2,7 @@
 
 The Medalian Data Pipeline integrates AWS Redshift, S3, and Glue with dbt to orchestrate a robust data warehousing and analytics ecosystem. It organizes data into Bronze, Silver, and Gold layers, ensuring data integrity and enabling seamless transformations. With automated ingestion, transformation, enrichment, and consumption processes, it empowers stakeholders with curated, business-ready insights for informed decision-making.
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/4399bc81-f493-42a0-a512-8b150851fa52)
-
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0df5807b-2a41-4745-a14a-eb007df3f173)
 
 
 ### Prerequisites
