@@ -429,13 +429,53 @@ dbt run
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/5d9959d0-670f-49a5-83e7-b96251659bbe)
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e2044b11-5612-4fdf-9cf5-948fc1e68a95)
 
-# Write and test few custom DQ checks to verify the following.
-#### 
+# Write and test a few custom DQ checks to verify the following.
+
 * Are my account types valid?
 * Do we have credit score values in a defined range?
 * any dupes in the currency dimension?
 * any duplicate account numbers?
 * any records with negative account balance?
+
+### Example:
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/11f9274f-6fb1-4a90-8b86-96bc3f9a45b7)
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw/tests/gold/dimensions
+dbt test --select test_positive_account_balance
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c2d5c3e9-8ae5-40c4-8330-81def07b9adb)
+
+```sh
+dbt test --select test_duplicate_account_numbers
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/88b02253-8cad-4b06-ab6b-08427986d66e)
+
+# Analyses
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw/analyses
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/8715cb63-289a-481f-a562-b767df177baf)
+### customer segmentation
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/3666b42a-1ee2-407f-94d3-b2c9be9981ba)
+
+### monthly active users
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/31382e49-5834-4a41-94b3-f620e709dd8d)
+
+
+# DBT Documentation
+```sh
+cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw
+dbt docs generate
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/22b876e3-3f26-468f-bf19-07f7f878c281)
+
+```sh
+dbt docs serve
+```
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/1f5a2f71-1687-47a5-91c1-3e9a0d23201e)
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0c9b65fc-edb6-413d-af6e-cdb9a9ce8e38)
+
 
 
 
