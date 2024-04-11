@@ -411,6 +411,10 @@ dbt run
 ### Refer below for all other test case YAML files
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b317e053-b08b-4cda-8bfa-6977e18f9b7e)
 
+### gold layer fact tables YAML files
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/4ef93108-9c96-4d26-81a1-e6cc1668d744)
+
+
 # Do compile and test all the DQ checks.
 ```sh
 cd /workspaces/lakehouse-formation/dbt-redshift-dw/dbt/dbt_redshift_dw/
