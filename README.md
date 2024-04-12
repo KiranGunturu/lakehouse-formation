@@ -1,4 +1,10 @@
+# Phase - I
+
 ![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/60d474f0-0d0e-4391-9791-3015d08b8347)
+
+# Phase - II
+
+![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e83cee73-4397-4b3b-9201-b6f2119c2d31)
 
 
 ### Title: "Automated Data Pipeline for Spotify: Extracting, Transforming, and Analyzing Music Data Using AWS Lambda, S3, Glue, and Athena"
