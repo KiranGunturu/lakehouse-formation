@@ -1,5 +1,5 @@
 import kaggle
-import zipfile36=0.1.3
+import zipfile
 import pandas as pd
 import numpy as np
 import sqlalchemy as sal
@@ -11,6 +11,7 @@ from io import StringIO
 # constants
 zipfilepath = "/workspaces/lakehouse-formation/kaggle-pandas-sqlserver/retail_orders.zip"
 file = "/workspaces/lakehouse-formation/kaggle-pandas-sqlserver/orders.csv"
+bucket_name="kaggle-retail-orders"
 
 # unzip the file to the local directory
 def unzip_csv(zipfilepath):
@@ -66,6 +67,10 @@ def data_cleaning(df):
     return df
 
 def push_to_s3(df):
+    csv_buffer = StringIO()
+    df.to_csv(csv_buffer, index=False)
+    s3_client = boto3.resource('s3')
+    s3_client.Object(bucket_name, 'orders_data.csv').put(Body=csv_buffer.getvalue())
 
 
 
@@ -81,6 +86,9 @@ if __name__ == "__main__":
 
     # data cleaning
     df =  data_cleaning(df)
+
+    # load to s3
+    push_to_s3(df)
 
 
     

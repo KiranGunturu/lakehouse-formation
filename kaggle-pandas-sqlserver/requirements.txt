@@ -1,5 +1,5 @@
 kaggle
-zipfile
 pandas
 numpy
 sqlalchemy
+boto3

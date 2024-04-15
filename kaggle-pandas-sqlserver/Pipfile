@@ -9,6 +9,7 @@ zipfile = "*"
 pandas = "*"
 numpy = "*"
 sqlalchemy = "*"
+zipfile36 = "==0.1.3"
 
 [dev-packages]
 
