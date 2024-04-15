@@ -1,3 +1,4 @@
 kaggle
 zipfile
 pandas
+numpy
