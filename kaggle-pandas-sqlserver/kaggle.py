@@ -5,6 +5,7 @@ import numpy as np
 import sqlalchemy as sal
 import boto3
 from io import StringIO
+#from kaggle.api.kaggle_api_extended import KaggleApi
 
 #!kaggle datasets download kirangunturu01/retail-orders -f orders.csv
 
@@ -12,6 +13,20 @@ from io import StringIO
 zipfilepath = "/workspaces/lakehouse-formation/kaggle-pandas-sqlserver/retail_orders.zip"
 file = "/workspaces/lakehouse-formation/kaggle-pandas-sqlserver/orders.csv"
 bucket_name="kaggle-retail-orders"
+
+def download_from_kaggle():
+    # Instantiate the Kaggle API
+    api = KaggleApi()
+
+    # Authenticate with your Kaggle credentials
+    api.authenticate()
+
+    # Specify the dataset you want to download
+    dataset_name = 'kirangunturu01/retail-orders'  # Replace with the actual username and dataset name
+
+    # Download the dataset
+    api.dataset_download_files(dataset_name)
+
 
 # unzip the file to the local directory
 def unzip_csv(zipfilepath):
@@ -78,6 +93,9 @@ def push_to_s3(df):
 
 if __name__ == "__main__":
 
+    # download the dataset from kaggle
+    #download_from_kaggle()
+
     # unzip
     unzip_csv(zipfilepath)
 
@@ -89,6 +107,8 @@ if __name__ == "__main__":
 
     # load to s3
     push_to_s3(df)
+
+
 
 
     
