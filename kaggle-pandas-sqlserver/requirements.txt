@@ -2,3 +2,4 @@ kaggle
 zipfile
 pandas
 numpy
+sqlalchemy

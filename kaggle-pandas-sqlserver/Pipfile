@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 kaggle = "*"
+zipfile = "*"
+pandas = "*"
+numpy = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 
