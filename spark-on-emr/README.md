@@ -1,300 +1,128 @@
-# Phase - I
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/60d474f0-0d0e-4391-9791-3015d08b8347)
+# AWS Data Analytics Project
 
-# Phase - II
+Overview
+This project demonstrates the end-to-end process of setting up and running a data analytics pipeline on AWS. The pipeline leverages a combination of AWS services including EMR, S3, Terraform, Step Functions, and IAM. The project automates the provisioning of resources, the execution of Spark jobs, and manages permissions, all within a scalable and secure environment.
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e83cee73-4397-4b3b-9201-b6f2119c2d31)
+Project Components
 
+### 1. Infrastructure Setup with Terraform
+### EMR Cluster Provisioning: 
+Terraform scripts are used to provision an EMR cluster, which is configured to process large-scale data efficiently.
+### S3 Buckets: 
+S3 is used as the primary storage solution for input and output data.
+### EC2 Key Pairs: 
+Created using Terraform for secure SSH access to EMR nodes.
+### IAM Permissions: 
+Managed through Terraform to ensure secure access to resources.
+### 2. AWS CLI & Terraform Installation
+Instructions are provided for installing AWS CLI and Terraform, enabling users to interact with AWS services from their local machines or CI/CD pipelines.
+### 3. Spark Code Development
+Spark Jobs: Spark code is written to perform data transformations and analytics. The code reads input data from S3, processes it, and writes the output back to S3.
+Step Functions: The Spark job is executed as a step job on the EMR cluster using Step Functions, ensuring smooth orchestration of tasks.
+### 4. GitHub Codespaces Integration
+For developers without access to a personal laptop, GitHub Codespaces is utilized. This provides a cloud-based development environment pre-configured with the necessary tools and configurations.
+### 5. Data Processing Workflow
+Reading from S3: Input data is fetched from an S3 bucket. \n
 
-### Title: "Automated Data Pipeline for Spotify: Extracting, Transforming, and Analyzing Music Data Using AWS Lambda, S3, Glue, and Athena"
-
-The project aims to develop an end-to-end data pipeline for extracting, transforming, and analyzing data from the Spotify API. Leveraging AWS services such as Lambda, S3, Glue, Athena, and Terraform, the pipeline automates the extraction of data, transformation into structured formats, and enables analytical queries for insights.
-
-### The pipeline consists of three main steps:
-
-#### Data Extraction and Loading:
-* Python scripts are developed to interact with the Spotify API, utilizing the client ID and client secret obtained from the Spotify developer app for authentication.
-
-* AWS Lambda functions are utilized to execute the Python scripts. These functions are lightweight, scalable, and can be triggered by various events.
-
-* The scheduling of the Lambda function is managed through AWS CloudWatch Events, leveraging EventBridge's cron notation to trigger the function daily at a specified time.
-
-* Upon execution, the Lambda function retrieves data from the Spotify API by making authenticated requests using the client ID and client secret.
-* The retrieved data is stored in JSON format within an S3 landing folder.
-* Integration of the client ID and client secret ensures secure communication between the Lambda function and the Spotify API, enabling the retrieval of desired data while adhering to authentication protocols.
-* AWS IAM roles are configured to grant necessary permissions for the Lambda function to access the Spotify API and write data to the S3 bucket.
-
-#### Data Transformation:
-* After the raw data is extracted from the Spotify API and stored in the S3 landing folder, it undergoes transformation to prepare it for analysis.
-
-* A dedicated AWS Lambda function is triggered by S3 Put Object events, ensuring immediate processing of newly arrived data.
-
-* Upon triggering, the Lambda function parses the JSON files containing Spotify data and structures it into three distinct categories: albums, songs, and artists.
-
-* For each category, the Lambda function converts the structured data into a standardized format, typically CSV, to facilitate efficient querying and analysis.
-
-* Transformation involves cleaning and formatting the data, handling any inconsistencies or missing values, and ensuring uniformity across records.
-
-* Once transformed, the data is organized into separate S3 folders for each category, maintaining a well-organized data hierarchy for downstream processing and storage.
-
-* AWS IAM roles are configured to grant necessary permissions for the Lambda function to access the transformed data in the S3 buckets.
-
-#### Data Cataloging and Analytics: 
-* Upon successful transformation, the structured data is ready for cataloging and analysis.
-AWS Glue, a fully managed ETL service, is leveraged to automatically catalog the transformed data stored in the S3 folders.
-
-* Glue crawlers are configured to traverse the S3 directories containing the transformed data and infer the schema of the CSV files.
-
-* These crawlers detect the structure of the data and create corresponding tables in the Glue Data Catalog, a centralized metadata repository.
-
-* The Glue Data Catalog provides a unified view of the data, including table definitions, column types, and partitioning information, facilitating easy access and management of the datasets.
-
-* With the data cataloged, Amazon Athena, a serverless interactive query service, is utilized to execute SQL queries against the Glue tables.
-
-* Athena enables ad-hoc querying and analysis of the cataloged data using standard SQL syntax, without the need for managing infrastructure.
-
-* Users can run analytical queries to extract insights, generate reports, and perform data exploration directly on the cataloged datasets.
-
-* Athena integrates seamlessly with other AWS services, allowing for data visualization and further processing using tools like Amazon QuickSight or custom dashboards.
+Writing to S3: Processed data is written back to a designated S3 bucket.
+Prerequisites
+### AWS Account: 
+Access to an AWS account with permissions to create and manage EMR, S3, IAM, and other related resources.
+### AWS CLI: 
+Installed on your local machine for interaction with AWS services.
+### Terraform: 
+Installed for infrastructure automation.
+### GitHub Account: 
+Access to GitHub Codespaces if needed.
 
 
+# Installation
 
-#### IInfrastructure as Code (IaC) Approach:
-* Infrastructure as Code (IaC) is a methodology that enables the management and provisioning of infrastructure using code rather than manual processes.
+### Install aws cli on linux machine
 
-* In this project, IaC principles are adopted to automate the provisioning and configuration of various AWS resources required for the data pipeline.
-* Terraform, an open-source infrastructure provisioning tool, is selected as the primary tool for implementing the IaC approach.
-* Terraform templates, written in HashiCorp Configuration Language (HCL), define the desired state of the infrastructure components.
-* The Terraform templates specify the configuration of AWS resources such as S3 buckets, Lambda functions, CloudWatch events, Glue crawlers, and Glue catalog database.
-* Using Terraform, infrastructure changes are managed declaratively, meaning the desired state of the infrastructure is defined in the Terraform configuration files, and Terraform ensures that the actual state matches the desired state.
-* Terraform facilitates consistent and reproducible infrastructure deployments across different environments (e.g., development, staging, production), reducing the risk of configuration drift and ensuring environment parity.
-* Version control systems such as Git are utilized to track changes to the Terraform codebase, enabling collaboration among team members and providing a history of infrastructure modifications.
-* Continuous Integration/Continuous Deployment (CI/CD) pipelines may be integrated with Terraform to automate the deployment process, enabling rapid and reliable infrastructure updates.
-* Infrastructure changes can be previewed and tested in isolated environments before being applied to production, ensuring stability and minimizing disruptions.
-Overall, the IaC approach using Terraform enhances scalability, reliability, and maintainability of the data pipeline infrastructure, enabling efficient management of AWS resources throughout their lifecycle.
-
-#### Terraform Custom Modules:
-
-These custom Terraform modules are designed with a focus on reusability, allowing them to be utilized across the enterprise ecosystem. By simply passing input arguments to the custom modules, teams can provision infrastructure tailored to their specific needs without reinventing the wheel. Whether deploying S3 buckets with multiple keys, configuring Lambda functions with various event triggers, or provisioning AWS Glue catalog databases and crawlers, these modular components streamline the infrastructure provisioning process and promote consistency and standardization across projects. This approach enables teams to leverage pre-built infrastructure templates, reducing time-to-market and enhancing collaboration and knowledge sharing within the organization
-
-
-
-## Installation
-
-### Terraform installation
-
-##### On Amazon Linux
-
-```sh
-sudo yum install -y yum-utils
-```
-```sh
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-```
-```sh
-sudo yum -y install terraform
-```
-#### Verify the installation
-
-```sh
-terraform --version
-terraform -help
-```
-
-### AWS CLI installation
-
-```sh
+```bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 ```
-#### Verify the installation
+#### Verify
 
-```sh
+```bash
 aws --version
 ```
 
-#### configure aws credentials: provide access key and secret access key
+### Install Terraform
 
-```sh
-aws configure
+find out the distribution
+
+```bash
+cat /etc/*-release
 ```
-    
+below is for linux distribution
 
-
-# Deployement - Provision S3 Bucket
-#### Lets verify if we already have the bucket that we want to provision
-
-```sh
-aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "spotify"
+```bash
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 ```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9610ec90-b241-42bb-b8a0-64e468ece42f)
 
-#### Provision the S3 bucket and multiple folders using Terraform custom S3 Module
-```sh
-cd spotify-analytics-on-aws-athena/provision-s3/
+```bash
+wget -O- https://apt.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+
 ```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/7a487670-52ab-4e1c-b209-94bdc60f196b)
+```bash
+gpg --no-default-keyring \
+--keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+--fingerprint
 
-#### Initiate the Terraform
-```sh
-terraform init
 ```
-#### Create S3 bucket with input args with the help of a custom s3 module
-```sh
-terraform plan
+
+```bash
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+
 ```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/bd3e7fd7-0406-46fd-826b-15309f77898f)
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/4371985a-7d12-41cf-931e-16639e61881f)
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/a2eda09f-8bf5-45b2-b988-f8c207504e8b)
-
-#### Provision AWS resources
-```sh
-terraform apply
+```bash
+sudo apt update
 ```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/ccbf82ad-33cb-48cf-9c96-5b11a437c1dd)
-
-#### Verify the bucket and folders created
-```sh
-aws s3api list-buckets --query 'Buckets[*].[Name]' --output text | grep "spotify"
+```bash
+sudo apt-get install terraform
 ```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b794afa1-7d83-4163-b74f-3777138cab4a)
-
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9da872d6-0012-4100-bf31-20e931f39d6c)
-
-
-# Deployement - Provision TWO Lambda Functions to Extract RAW Data and Transform, Load the data to S3
-#### Verify if we have any functions.
-
-```sh
-aws lambda list-functions
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/7df83d05-a1aa-4b9a-8bf4-c0ca724a9815)
-
-#### Provision lambda functions one with CloudWatch event and other one with s3 event
-```sh
-cd spotify-analytics-on-aws-athena/provision-lambda/
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b0553a43-4b3c-4562-bc7b-89b567959c9b)
-
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/6b3bdd38-366c-49a0-9f72-11fef798ca25)
-
-
-#### Initiate the Terraform
-```sh
-terraform init
-```
-#### Create lambda functions with a custom lambda module
-```sh
-terraform plan
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/a97f1515-dc17-4bd9-8bd2-2f3efe49f6e4)
-
-#### Provision AWS resources
-```sh
-terraform apply
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/37c03913-1861-48b6-be7d-d913925d7075)
-
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/05e4aee7-e36c-482b-b928-c17f6c707eae)
-
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/bf43ec6f-1695-43dd-b176-2dddf867ae6b)
-
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/b3774dc1-1527-41a0-80d4-fd59c362c5bc)
-
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/70278a61-f06f-4e68-8758-64b616e0ca29)
-
-## We now have both the lambda functions working. files coming to the landing folder are transformed and sent to albums, songs, and artists folders. Once Processing is done, they are archived.
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/ce1c4ba1-2170-4164-a735-fcb61ba06ad9)
-
-
-# Deployement - Provision Glue Crawlers, Glue Triggers, Glue Catalog Databases and Glue catalog Tables
-#### Verify if we have any of them
-```sh
-aws glue list-crawlers
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/faedd966-59bb-4710-adc4-4ce6d27f58c8)
-
-```sh
-aws glue list-triggers
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/277148f9-c1a8-43f8-8b9a-d6af2db183f9)
-
-```sh
-aws glue get-databases
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0ad6ae57-e2db-46e4-ba2f-d87cc4c9a25f)
-
-```sh
-aws glue get-tables --database-name your-database-name
-```
-#### Initiate the Terraform
-```sh
-terraform init
-```
-#### Plan the resources
-```sh
-terraform plan
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/7e147026-dbb5-41c4-bf62-137e90e896b2)
-
-#### Provisioning
-```sh
-terraform apply
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/45902fc4-b89b-4940-bc41-ba62221cb06d)
-
 #### Verify
 
-```sh
-aws glue list-crawlers
+```bash
+terraform -version
 ```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/41807836-e252-4f78-812d-3996916d0c5b)
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/1968ac38-3a4a-4f86-b0b7-f279f2dd564c)
+If you don’t have a personal Linux machine or are hesitant to install something on your office machine, don’t worry. We have something called GitHub Codespaces. GitHub will provide us with a virtual machine that comes with 2 CPUs and 4 GB of RAM, and we can practice on it for up to 60 hours per month. That means we can practice for approximately 2 hours per day.
 
+    To set up your environment in GitHub Codespaces:
 
-```sh
-aws glue list-triggers
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/911ebbdd-bc67-47db-a324-890207271622)
+    1) Log in to your GitHub repository.
 
-```sh
-aws glue get-databases
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/c4289073-458e-4707-9097-4cfbf834cf6c)
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/2501dbd2-1d2f-443c-b108-097660811fc0)
+    2) Click on Code.
 
-### Crawlers Running
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/fa80152d-de8d-4e42-a09d-05369f88436d)
+    3)  Click on Codespaces on the main page. This will open up a virtual machine.
 
-### Crawlers ran and Succeeded
+    4) In the search box, type the following:
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/0b9118a7-e871-4f87-94ec-1f0d5a7a0e16)
+        1)  > Add Dev Container Config Files:
 
-```sh
-aws glue get-tables --database-name spotify_analytics --query 'TableList[*].Name'
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/531d2ee5-ac00-481b-9b73-9ce5dce2d054)
+        Click on Add Dev container config files (or choose from the drop-down menu).
+        Click on Modify your active configuration.
+        Search for Terraform.
+        Choose the option with the verified mark at the end.
 
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/e3440203-f8cb-49a8-8892-d52af01418e3)
+        2) Install AWS CLI:
 
-# Destroy
-```sh
-terraform destroy
-```
-![image](https://github.com/KiranGunturu/lakehouse-formation/assets/91672788/9453e277-544d-4bbe-9784-8292e0f84761)
+        Repeat the same steps as above to install the AWS CLI.
 
+        3) Rebuild Container:
 
-
-
-
-
-
-
-
+        > rebuild - Click on Rebuild container to apply the changes.
 
 
 
