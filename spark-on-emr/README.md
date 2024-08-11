@@ -220,6 +220,8 @@ terraform apply
 
 Make sure we are allowing traffic between the EMR master node and our local machine. Essentially, this involves allowing traffic from outside the VPC into the EMR cluster. Go to the EMR master node's security group, edit the inbound rules, and add a rule to allow traffic from 0.0.0.0/0.
 
+![image](https://github.com/user-attachments/assets/5d1ce411-2824-4513-b9a2-4f6d832f9620)
+
 # SSH to the EMR Master node from our local machine / Github VM
 
 ![image](https://github.com/user-attachments/assets/b83b8de6-ef7e-40c5-884b-18e920404149)
