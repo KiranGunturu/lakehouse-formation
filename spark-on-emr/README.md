@@ -51,6 +51,7 @@ sudo ./aws/install
 ```bash
 aws --version
 ```
+![image](https://github.com/user-attachments/assets/fad27b5d-c850-4ed2-8736-2e1c5f757cb2)
 
 ### Install Terraform
 
@@ -59,6 +60,8 @@ find out the distribution
 ```bash
 cat /etc/*-release
 ```
+![image](https://github.com/user-attachments/assets/e00ca1a4-2d99-4a51-9fbd-f15ca91b8ec4)
+
 below is for linux distribution
 
 ```bash
@@ -96,6 +99,8 @@ sudo apt-get install terraform
 ```bash
 terraform -version
 ```
+![image](https://github.com/user-attachments/assets/e21eb583-17e3-47b8-b3b2-40e62ea4107c)
+
 
 If you don’t have a personal Linux machine or are hesitant to install something on your office machine, don’t worry. We have something called GitHub Codespaces. GitHub will provide us with a virtual machine that comes with 2 CPUs and 4 GB of RAM, and we can practice on it for up to 60 hours per month. That means we can practice for approximately 2 hours per day.
 
@@ -104,8 +109,11 @@ If you don’t have a personal Linux machine or are hesitant to install somethin
     1) Log in to your GitHub repository.
 
     2) Click on Code.
+    ![image](https://github.com/user-attachments/assets/f6d64c77-cf89-4ce5-b67a-a0851cc8245c)
 
     3)  Click on Codespaces on the main page. This will open up a virtual machine.
+    
+    ![image](https://github.com/user-attachments/assets/6793a6c5-39d6-4c69-93ed-60c9e17bc959)
 
     4) In the search box, type the following:
 
