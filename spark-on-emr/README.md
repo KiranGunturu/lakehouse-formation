@@ -208,6 +208,11 @@ terraform apply
 
 ![image](https://github.com/user-attachments/assets/fc5df9d9-20d9-4f28-9af8-f0f52dcd85c5)
 
+# SSH to the EMR Master node from our local machine / Github VM
+
+![image](https://github.com/user-attachments/assets/b83b8de6-ef7e-40c5-884b-18e920404149)
+
+
 
 
 
