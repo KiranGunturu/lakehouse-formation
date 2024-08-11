@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"s3_raw","Source":"file:///workspaces/lakehouse-formation/dbt-redshift-dw/module/s3","Dir":".terraform/modules/s3_raw"}]}
