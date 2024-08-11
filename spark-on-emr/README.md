@@ -183,6 +183,10 @@ aws s3api list-buckets --query "Buckets[?starts_with(Name, 'spark')].Name" --out
 
 # Provisioning EMR
 ### check if we have any active EMR Cluster
+```bash
+aws emr list-clusters --query "Clusters[].{Id:Id,Name:Name,Status:Status.State}" --output table
+```
+
 ![image](https://github.com/user-attachments/assets/e9aa98ac-c70b-4eb6-adcd-0477db2e4718)
 
 ```bash
