@@ -182,6 +182,27 @@ aws s3api list-buckets --query "Buckets[?starts_with(Name, 'spark')].Name" --out
 ![image](https://github.com/user-attachments/assets/bc382089-e4de-41a4-98af-e12b81291a62)
 
 # Provisioning EMR
+### check if we have any active EMR Cluster
+![image](https://github.com/user-attachments/assets/e9aa98ac-c70b-4eb6-adcd-0477db2e4718)
+
+```bash
+cd /workspaces/lakehouse-formation/spark-on-emr/provision-emr
+```
+![image](https://github.com/user-attachments/assets/8d3561b3-b272-4dae-930d-9bb559a2b780)
+
+```bash
+terraform init
+terraform plan
+terraform apply
+```
+![image](https://github.com/user-attachments/assets/94ce2c15-1be8-4dc2-83eb-1fc3aedf15b0)
+
+![image](https://github.com/user-attachments/assets/d4a4c01b-9fc0-45df-997a-2216b760b6ad)
+
+
+
+
+
 
 
 
