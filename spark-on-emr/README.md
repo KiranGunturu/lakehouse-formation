@@ -202,6 +202,9 @@ terraform apply
 
 ![image](https://github.com/user-attachments/assets/7acdd0c7-e7dc-45c5-b299-d5afd6ace2e6)
 
+![image](https://github.com/user-attachments/assets/fc5df9d9-20d9-4f28-9af8-f0f52dcd85c5)
+
+
 
 
 
