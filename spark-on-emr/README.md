@@ -181,6 +181,16 @@ aws s3api list-buckets --query "Buckets[?starts_with(Name, 'spark')].Name" --out
 ```
 ![image](https://github.com/user-attachments/assets/bc382089-e4de-41a4-98af-e12b81291a62)
 
+# Provisioning EC2 Key Pair
+
+I tried creating, attaching, and downloading the EC2 key pair with Terraform, but I was not successful in downloading the key pair. Therefore, I decided to manually create the key pair and assign it while provisioning the EMR. If we create it manually, the key pair will automatically be downloaded with the .pem extension to our local machine when we click on "Create Key Pair." We can later use this to SSH into the EMR master node.
+
+![image](https://github.com/user-attachments/assets/21ee3a38-da22-4325-9bb3-98318c209830)
+
+make sure to change the main.tf file as per your key pair name.
+
+![image](https://github.com/user-attachments/assets/ffddd3f2-b399-4f78-9f27-0c6b2531ec1d)
+
 # Provisioning EMR
 ### check if we have any active EMR Cluster
 ```bash
