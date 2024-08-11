@@ -109,11 +109,8 @@ If you don’t have a personal Linux machine or are hesitant to install somethin
     1) Log in to your GitHub repository.
 
     2) Click on Code.
-    ![image](https://github.com/user-attachments/assets/f6d64c77-cf89-4ce5-b67a-a0851cc8245c)
-
-    3)  Click on Codespaces on the main page. This will open up a virtual machine.
     
-    ![image](https://github.com/user-attachments/assets/6793a6c5-39d6-4c69-93ed-60c9e17bc959)
+    3)  Click on Codespaces on the main page. This will open up a virtual machine.
 
     4) In the search box, type the following:
 
