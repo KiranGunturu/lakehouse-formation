@@ -53,6 +53,12 @@ aws --version
 ```
 ![image](https://github.com/user-attachments/assets/fad27b5d-c850-4ed2-8736-2e1c5f757cb2)
 
+### configure aws creds using either aws account root user and an IAM user
+```bash
+aws configure
+```
+![image](https://github.com/user-attachments/assets/a17763f7-69eb-4498-b266-907d5904508f)
+
 ### Install Terraform
 
 find out the distribution
@@ -128,6 +134,58 @@ If you don’t have a personal Linux machine or are hesitant to install somethin
         3) Rebuild Container:
 
         > rebuild - Click on Rebuild container to apply the changes.
+
+
+
+# Provisioning s3
+
+### S3
+```bash
+/workspaces/lakehouse-formation/spark-on-emr/provision-s3
+```
+![image](https://github.com/user-attachments/assets/d62aaec3-f24c-4d29-9b72-64a6fcd1b36a)
+
+below is the reusable module for s3. customize your object names and name of the bucket.
+
+![image](https://github.com/user-attachments/assets/87884761-e1a3-4bb6-aca9-24fb30bd6d79)
+
+I do not have the bucket mentioned above in my aws account.
+
+```bash
+aws s3api list-buckets --query "Buckets[?starts_with(Name, 'spark')].Name" --output text
+```
+![image](https://github.com/user-attachments/assets/123663dd-6ddc-4142-851c-f4bb89452111)
+
+```bash
+terraform init
+```
+![image](https://github.com/user-attachments/assets/096b99af-464c-4fb5-aeca-a7b649ba53eb)
+
+```bash
+terraform plan
+```
+![image](https://github.com/user-attachments/assets/0e342a19-6f9a-4df8-a2e0-0bb9eb5cc933)
+
+![image](https://github.com/user-attachments/assets/7e616376-3169-4279-bbb3-b9fc1b7a0bcb)
+
+
+```bash
+terraform apply
+```
+![image](https://github.com/user-attachments/assets/5e1c92a1-9f5b-4031-b1a8-a31948550642)
+
+### verify if s3 is provisioned properly
+
+```bash
+aws s3api list-buckets --query "Buckets[?starts_with(Name, 'spark')].Name" --output text
+```
+![image](https://github.com/user-attachments/assets/bc382089-e4de-41a4-98af-e12b81291a62)
+
+# Provisioning EMR
+
+
+
+
 
 
 
