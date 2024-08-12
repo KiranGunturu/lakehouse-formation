@@ -7,8 +7,8 @@ provider "aws" {
 # provision S3 bucket to store raw data
 module "s3_raw" {
     source = "/workspaces/lakehouse-formation/dbt-redshift-dw/module/s3"
-    objects = ["landing/",
-			"landing/accounts/"
+    objects = ["raw/",
+			"cleansed/"
 
         ]
     bucket = "spark-emr-data-processing"

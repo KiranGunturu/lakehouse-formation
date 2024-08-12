@@ -59,6 +59,7 @@ aws configure
 ```
 ![image](https://github.com/user-attachments/assets/a17763f7-69eb-4498-b266-907d5904508f)
 
+
 ### Install Terraform
 
 find out the distribution
